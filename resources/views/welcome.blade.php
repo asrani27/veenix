@@ -50,7 +50,7 @@
 
         <hr>
 
-        <h3>Latest Series</h3>
+        {{-- <h3>Latest Series</h3>
         <div class="row">
             <div class="col-lg-2 col-6" style="max-width: 180px;">
                 <div class="card card-widget widget-user">
@@ -63,7 +63,7 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 
     
