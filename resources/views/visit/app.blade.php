@@ -20,7 +20,7 @@
   <nav class="main-header navbar navbar-expand-md navbar-light navbar-dark" style="box-shadow: 0px 0.5px 5px; margin-left:0px; ">
     <div class="container" style="max-width:95%;">
       <a href="/" class="navbar-brand">
-        <img src="/icon/muvnix.png" width="100%" class="brand-image" style="margin-top:6px;margin-bottom:6px">
+        <img src="{{logo()}}" width="100%" class="brand-image" style="margin-top:6px;margin-bottom:6px">
         
       </a>
 

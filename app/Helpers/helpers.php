@@ -11,6 +11,10 @@ function histats()
 {
     return Setting::first() == null ? null : Setting::first()->histats;
 }
+function logo()
+{
+    return Setting::first() == null ? null : Setting::first()->logo;
+}
 function checkGenapGanjil($semester, $matakuliah)
 {
     if ($semester % 2 == 0) {

@@ -40,6 +40,8 @@ Route::middleware(['superadmin'])->group(function () {
         Route::get('/actor', [ActorController::class, 'index']);
         Route::get('/histats', [SuperadminController::class, 'histats']);
         Route::post('/histats', [SuperadminController::class, 'histats_update']);
+        Route::get('/logo', [SuperadminController::class, 'logo']);
+        Route::post('/logo', [SuperadminController::class, 'logo_update']);
         Route::get('/disquss', [SuperadminController::class, 'disquss']);
         Route::post('/disquss', [SuperadminController::class, 'disquss_update']);
 

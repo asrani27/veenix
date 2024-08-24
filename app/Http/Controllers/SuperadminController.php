@@ -73,7 +73,25 @@ class SuperadminController extends Controller
         }
         return redirect('/superadmin/user');
     }
-
+    public function logo()
+    {
+        $data = Setting::first();
+        return view('superadmin.setting.logo', compact('data'));
+    }
+    public function logo_update(Request $req)
+    {
+        if (Setting::first() == null) {
+            $n = new Setting();
+            $n->logo = $req->logo;
+            $n->save();
+        } else {
+            Setting::first()->update([
+                'logo' => $req->logo
+            ]);
+        }
+        Session::flash('success', 'diupdate');
+        return back();
+    }
 
     public function histats()
     {

@@ -75,6 +75,14 @@
   </li> 
   
   <li class="nav-item">
+    <a href="/superadmin/logo" class="nav-link">
+      <i class="nav-icon fas fa-circle"></i>
+      <p>
+        Logo
+      </p>
+    </a>
+  </li>
+  <li class="nav-item">
     <a href="/superadmin/gantipassword" class="nav-link">
       <i class="nav-icon fas fa-key"></i>
       <p>

@@ -30,7 +30,9 @@
               <!-- /.card-tools -->
             </div>
             <div class="card-body">
-              <a href="{{$data->link_download}}" class="btn btn-primary" target="_blank"><i class="fas fa-play"></i> DOWNLOAD</a>
+              @if ($data->link_download != null)
+                <a href="{{$data->link_download}}" class="btn btn-primary" target="_blank"><i class="fas fa-play"></i> DOWNLOAD</a>
+              @endif
             </div>
           </div>
     </div>
