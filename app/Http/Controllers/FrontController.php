@@ -42,6 +42,7 @@ class FrontController extends Controller
     public function detailMovie($slug)
     {
         $data = Post::where('slug', $slug)->first();
+        $data = $data->views + 1;
         return view('detail_movie', compact('data'));
     }
     public function detailSeries($slug)
