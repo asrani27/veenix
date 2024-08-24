@@ -56,7 +56,7 @@ class PostController extends Controller
 
             $image->resize(175, 260);
             $image->save($destinationPathThumbnail . $filename);
-            $namafile = config('app.url') . ':8000/storage/poster/' . $filename;
+            $namafile = config('app.url') . '/storage/poster/' . $filename;
         } else {
             $namafile = Post::findOrFail($id)->image;
         }
