@@ -31,7 +31,7 @@ class FrontController extends Controller
     }
     public function movieByYear($year)
     {
-        $data = Post::where('year', 'like', '%' . $year . '%')->paginate(16);
+        $data = Post::where('release', 'like', '%' . $year . '%')->paginate(16);
         return view('year', compact('data', 'year'));
     }
     public function movieByCountry($country)
