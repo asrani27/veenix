@@ -71,9 +71,8 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-2 ml-md-3">
+        <form class="form-inline ml-2 ml-md-3" method="get" action="/search">
           <div class="input-group input-group-sm">
-            <form method="get" action="/search">
               @csrf
               <input class="form-control form-control-" type="text" size="50" name="search"  value="{{old('search')}}" placeholder="Search" aria-label="Search">
               <div class="input-group-append">
@@ -81,7 +80,6 @@
                   <i class="fas fa-search"></i>
                 </button>
               </div>
-            </form>
           </div>
         </form>
       </div>

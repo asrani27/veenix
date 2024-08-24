@@ -19,7 +19,7 @@ class FrontController extends Controller
     public function search()
     {
         $search = request()->search;
-        dd($search);
+
         $data = Post::where('title', 'like', '%' . $search . '%')->paginate(16);
         request()->flash();
         return view('search', compact('data', 'search'));
