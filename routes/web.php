@@ -30,6 +30,9 @@ Route::middleware(['superadmin'])->group(function () {
         Route::post('/user/add', [SuperadminController::class, 'user_store']);
         Route::get('/user/delete/{id}', [SuperadminController::class, 'user_delete']);
 
+        Route::get('/gantipassword', [SuperadminController::class, 'gantipass']);
+        Route::post('/gantipassword', [SuperadminController::class, 'update_pass']);
+
         Route::get('/uri', [UriController::class, 'index']);
         Route::get('/genre', [GenreController::class, 'index']);
         Route::get('/country', [CountryController::class, 'index']);

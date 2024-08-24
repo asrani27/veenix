@@ -73,14 +73,16 @@
       </p>
     </a>
   </li> 
-  {{-- <li class="nav-item">
-    <a href="/superadmin/disquss" class="nav-link">
-      <i class="nav-icon fas fa-comment"></i>
+  
+  <li class="nav-item">
+    <a href="/superadmin/gantipassword" class="nav-link">
+      <i class="nav-icon fas fa-key"></i>
       <p>
-        Diquss
+        Ganti Password
       </p>
     </a>
-  </li>  --}}
+  </li> 
+  
   <li class="nav-item">
     <a href="/logout" class="nav-link" onclick="return confirm('Yakin ingin keluar?');">
       <i class="nav-icon fas fa-arrow-right"></i>

@@ -7,11 +7,31 @@ use App\Models\User;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use App\Models\KurikulumDetail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class SuperadminController extends Controller
 {
+    public function gantipass()
+    {
+        return view('superadmin.gantipass');
+    }
+
+    public function update_pass(Request $req)
+    {
+        if ($req->password != $req->confirm_password) {
+            Session::flash('error', 'Password Tidak Sama');
+            return back();
+        } else {
+            Auth::user()->update([
+                'password' => Hash::make($req->password)
+            ]);
+            Session::flash('success', 'berhasil di ganti');
+            return back();
+        }
+    }
+
     public function portal()
     {
         Session::flash('info', 'dalam pengembangan');
