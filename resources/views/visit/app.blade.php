@@ -73,12 +73,15 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-2 ml-md-3">
           <div class="input-group input-group-sm">
-            <input class="form-control form-control-" type="text" size="50" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </div>
+            <form method="get" action="/search">
+              @csrf
+              <input class="form-control form-control-" type="text" size="50" name="search"  value="{{old('search')}}" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-navbar" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </form>
           </div>
         </form>
       </div>

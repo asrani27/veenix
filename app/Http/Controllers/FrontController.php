@@ -16,6 +16,14 @@ class FrontController extends Controller
             return view('welcome');
         }
     }
+    public function search()
+    {
+        $search = request()->search;
+        dd($search);
+        $data = Post::where('title', 'like', '%' . $search . '%')->paginate(16);
+        request()->flash();
+        return view('search', compact('data', 'search'));
+    }
     public function movieByGenre($genre)
     {
         $data = Post::where('genre', 'like', '%' . $genre . '%')->paginate(16);

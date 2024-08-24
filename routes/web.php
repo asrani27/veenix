@@ -19,6 +19,7 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 Route::get('/movie/{slug}', [FrontController::class, 'detailMovie']);
+Route::get('/search', [FrontController::class, 'search']);
 Route::get('/series/{slug}', [FrontController::class, 'detailSeries']);
 Route::get('/genre/{genre}', [FrontController::class, 'movieByGenre']);
 Route::get('/country/{country}', [FrontController::class, 'movieByCountry']);
