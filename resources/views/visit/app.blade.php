@@ -38,9 +38,18 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">GENRE</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Action </a></li>
-              <li><a href="#" class="dropdown-item">Family </a></li>
-              <li><a href="#" class="dropdown-item">Laga </a></li>
+              {{-- <table>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                </tr>
+              </table> --}}
+              
+              @foreach (genre() as $item)
+              <li><a href="/genre/{{$item->nama}}" class="dropdown-item">{{$item->nama}} </a></li>
+              @endforeach
+              
             </ul>
           </li>
           <li class="nav-item dropdown">

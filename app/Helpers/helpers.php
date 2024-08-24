@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Post;
+use App\Models\Genre;
 use DOMXPath as Xpath;
 use App\Models\Setting;
 use DOMDocument as DOM;
@@ -14,6 +15,10 @@ function histats()
 function logo()
 {
     return Setting::first() == null ? null : Setting::first()->logo;
+}
+function genre()
+{
+    return Genre::get();
 }
 function checkGenapGanjil($semester, $matakuliah)
 {
