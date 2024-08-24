@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
 
-class PostController extends Controller
+class PostUserController extends Controller
 {
     public function index()
     {
-        $data = Post::orderBy('id', 'DESC')->paginate(10);
+        $data = Post::where('username', Auth::user()->username)->orderBy('id', 'DESC')->paginate(10);
         $data->getCollection()->transform(function ($item) {
             $item->genre = implode(", ", json_decode($item->genre));
             $item->country = implode(", ", json_decode($item->country));
@@ -20,12 +21,12 @@ class PostController extends Controller
             return $item;
         });
 
-        return view('superadmin.post.index', compact('data'));
+        return view('user.post.index', compact('data'));
     }
 
     public function add()
     {
-        return view('superadmin.post.add');
+        return view('user.post.add');
     }
 
     public function edit($id)
@@ -35,7 +36,7 @@ class PostController extends Controller
         $data->actor = implode(', ', json_decode($data->actor));
         $data->country = implode(', ', json_decode($data->country));
 
-        return view('superadmin.post.edit', compact('data'));
+        return view('user.post.edit', compact('data'));
     }
     public function update(Request $req, $id)
     {
@@ -56,17 +57,19 @@ class PostController extends Controller
 
             $image->resize(175, 260);
             $image->save($destinationPathThumbnail . $filename);
+            $namafile = config('app.url') . ':8000/storage/poster/' . $filename;
         } else {
-            $filename = Post::findOrFail($id)->image;
+            $namafile = Post::findOrFail($id)->image;
         }
+
         $param = $req->all();
-        $param['image'] = env('APP_URL') . ':8000/storage/poster/' . $filename;
+        $param['image'] = $namafile;
         $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
         $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
         $param['actor'] = json_encode(array_map('trim', (explode(',', $req->actor))));
 
         $data = Post::findOrFail($id)->update($param);
-        return redirect('/superadmin/post');
+        return redirect('/user/post');
     }
 
     public function delete($id)
@@ -87,13 +90,13 @@ class PostController extends Controller
         //save
         Post::create($param);
 
-        return redirect('/superadmin/post');
+        return redirect('/user/post');
     }
 
     public function search()
     {
         $search = request()->search;
-        $data = Post::where('title', 'like', '%' . $search . '%')->paginate(10)->withQueryString();
+        $data = Post::where('username', Auth::user()->username)->where('title', 'like', '%' . $search . '%')->paginate(10)->withQueryString();
         $data->getCollection()->transform(function ($item) {
             $item->genre = implode(", ", json_decode($item->genre));
             $item->country = implode(", ", json_decode($item->country));
@@ -101,6 +104,6 @@ class PostController extends Controller
             return $item;
         });
         request()->flash();
-        return view('superadmin.post.index', compact('data'));
+        return view('user.post.index', compact('data'));
     }
 }

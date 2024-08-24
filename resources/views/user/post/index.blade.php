@@ -5,12 +5,12 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4">
-        <a href="/superadmin/post/add" class="btn btn-primary btn-md">
+        <a href="/user/post/add" class="btn btn-primary btn-md">
           <i class="fas fa-plus"></i> Scrapping
         </a>
       </div>
       <div class="col-lg-8">
-        <form method="get" action="/superadmin/post/search">
+        <form method="get" action="/user/post/search">
           @csrf
           <div class="input-group">
             <input type="text" class="form-control" name="search" value="{{old('search')}}" placeholder="search" required>
@@ -47,10 +47,7 @@
                         <tr style="font-size: 14px">
                             <td>{{$key + $data->firstItem()}}</td>
                             <td><img src="{{$item->image}}" width="100px" height="140px"></td>
-                            <td>{{$item->title}}
-                              <br/><br/>
-                              <strong>By : {{$item->username}}</strong>
-                            </td>
+                            <td>{{$item->title}}</td>
                             <td>
                               {{$item->description}} <br/>
                               <strong>Genres :</strong> {{$item->genre}}<br/>
@@ -67,8 +64,8 @@
                               @endif
                             </td>
                             <td>
-                              <a href="/superadmin/post/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                              <a href="/superadmin/post/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
+                              <a href="/user/post/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                              <a href="/user/post/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

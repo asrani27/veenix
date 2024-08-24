@@ -145,7 +145,7 @@ function senatorPeters($uri)
     $data['release'] = $release;
     $data['actor'] = $actor;
     $data['director'] = $director;
-    $data['username'] = Auth::user()->name;
+    $data['username'] = Auth::user()->username;
 
     return $data;
 }

@@ -18,7 +18,6 @@
                         <th style="width: 10px">#</th>
                         <th>Nama</th>
                         <th>Username</th>
-                        <th>Ban</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -26,11 +25,11 @@
                         @foreach ($data as $key=> $item)
                         <tr>
                             <td>{{$key + 1}}</td>
-                            <td>{{$item->nama}}</td>
+                            <td>{{$item->name}}</td>
                             <td>{{$item->username}}</td>
-                            <td>{{$item->is_aktif}}</td>
                             <td>
-                              <a href="/superadmin/user/delete/{{$item->id}}" class="btn btn-sm btn-danger">
+                              <a href="/superadmin/user/resetpass/{{$item->id}}" class="btn btn-sm btn-primary"><i class="fa fa-key"></i> Reset Pass</a>
+                              <a href="/superadmin/user/delete/{{$item->id}}" class="btn btn-sm btn-danger"  onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         @endforeach

@@ -27,6 +27,33 @@ class SuperadminController extends Controller
         $data = User::where('name', '!=', 'superadmin')->paginate(10);
         return view('superadmin.user.index', compact('data'));
     }
+    public function user_add()
+    {
+        return view('superadmin.user.add');
+    }
+    public function user_delete($id)
+    {
+        User::find($id)->delete();
+        return back();
+    }
+
+    public function user_store(Request $req)
+    {
+        $check = User::where('username', $req->username)->first();
+        if ($check == null) {
+            $n = new User;
+            $n->name = $req->name;
+            $n->username = $req->username;
+            $n->password = Hash::make($req->password);
+            $n->roles = 'anggota';
+            $n->save();
+        } else {
+            Session::flash('error', 'username sudah ada, silahkan ganti yang lain');
+            return back();
+        }
+        return redirect('/superadmin/user');
+    }
+
 
     public function histats()
     {

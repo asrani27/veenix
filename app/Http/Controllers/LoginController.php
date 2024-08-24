@@ -14,7 +14,7 @@ class LoginController extends Controller
             if (Auth::user()->roles == 'superadmin') {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/superadmin/beranda');
-            } elseif (Auth::user()->roles == 'user') {
+            } elseif (Auth::user()->roles == 'anggota') {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/user/beranda');
             } else {
@@ -34,7 +34,7 @@ class LoginController extends Controller
             if (Auth::user()->roles == 'superadmin') {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/superadmin/beranda');
-            } elseif (Auth::user()->roles == 'user') {
+            } elseif (Auth::user()->roles == 'anggota') {
                 Session::flash('success', 'Selamat Datang');
                 return redirect('/user/beranda');
             } else {

@@ -1,16 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UriController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\YearController;
 use App\Http\Controllers\ActorController;
-use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\SuperadminController;
-use App\Http\Controllers\UriController;
-use App\Http\Controllers\YearController;
-use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/login', [LoginController::class, 'index']);
@@ -26,6 +28,7 @@ Route::middleware(['superadmin'])->group(function () {
         Route::get('/user', [SuperadminController::class, 'user']);
         Route::get('/user/add', [SuperadminController::class, 'user_add']);
         Route::post('/user/add', [SuperadminController::class, 'user_store']);
+        Route::get('/user/delete/{id}', [SuperadminController::class, 'user_delete']);
 
         Route::get('/uri', [UriController::class, 'index']);
         Route::get('/genre', [GenreController::class, 'index']);
@@ -44,5 +47,20 @@ Route::middleware(['superadmin'])->group(function () {
         Route::get('/post/edit/{id}', [PostController::class, 'edit']);
         Route::post('/post/edit/{id}', [PostController::class, 'update']);
         Route::get('/post/delete/{id}', [PostController::class, 'delete']);
+    });
+});
+
+Route::middleware(['anggota'])->group(function () {
+    Route::prefix('user')->group(function () {
+        Route::get('/beranda', [UserController::class, 'index']);
+        Route::get('/gantipassword', [UserController::class, 'gantipass']);
+        Route::post('/gantipassword', [UserController::class, 'update_pass']);
+        Route::get('/post', [PostUserController::class, 'index']);
+        Route::get('/post/search', [PostUserController::class, 'search']);
+        Route::get('/post/add', [PostUserController::class, 'add']);
+        Route::post('/post/add', [PostUserController::class, 'scrap']);
+        Route::get('/post/edit/{id}', [PostUserController::class, 'edit']);
+        Route::post('/post/edit/{id}', [PostUserController::class, 'update']);
+        Route::get('/post/delete/{id}', [PostUserController::class, 'delete']);
     });
 });

@@ -86,97 +86,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-          <li class="nav-item">
-            <a href="/superadmin/beranda" class="nav-link">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-          <li class="nav-header">POSTING DATA</li>
-          <li class="nav-item">
-            <a href="/superadmin/post" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Post Movie
-              </p>
-            </a>
-          </li>
-          {{-- <li class="nav-item">
-            <a href="/superadmin/tv" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>
-                Post TV Series
-              </p>
-            </a>
-          </li> --}}
-          {{-- <li class="nav-header">CATEGORY</li>
-          <li class="nav-item">
-            <a href="/superadmin/genre" class="nav-link">
-              <i class="nav-icon fas fa-film"></i>
-              <p>
-                Genre
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/superadmin/country" class="nav-link">
-              <i class="nav-icon fas fa-globe"></i>
-              <p>
-                Country
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/superadmin/year" class="nav-link">
-              <i class="nav-icon fas fa-calendar"></i>
-              <p>
-                Year
-              </p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="/superadmin/actor" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Actor
-              </p>
-            </a>
-          </li>--}}
-          <li class="nav-header">SETTING</li>
-          <li class="nav-item">
-            <a href="/superadmin/user" class="nav-link">
-              <i class="nav-icon fas fa-users"></i>
-              <p>
-                Users
-              </p>
-            </a>
-          </li> 
-          <li class="nav-item">
-            <a href="/superadmin/histats" class="nav-link">
-              <i class="nav-icon fas fa-chart-bar"></i>
-              <p>
-                Histats
-              </p>
-            </a>
-          </li> 
-          {{-- <li class="nav-item">
-            <a href="/superadmin/disquss" class="nav-link">
-              <i class="nav-icon fas fa-comment"></i>
-              <p>
-                Diquss
-              </p>
-            </a>
-          </li>  --}}
-          <li class="nav-item">
-            <a href="/logout" class="nav-link" onclick="return confirm('Yakin ingin keluar?');">
-              <i class="nav-icon fas fa-arrow-right"></i>
-              <p>
-                Logout
-              </p>
-            </a>
-          </li>
+          @if (Auth::user()->roles == 'superadmin')
+            @include('layouts.menu_admin')
+          @endif
+
+          @if (Auth::user()->roles == 'anggota')
+            @include('layouts.menu_user')
+          @endif
+
+          
           
         </ul>
       </nav>
