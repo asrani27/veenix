@@ -56,11 +56,12 @@ class PostController extends Controller
 
             $image->resize(175, 260);
             $image->save($destinationPathThumbnail . $filename);
+            $namafile = config('app.url') . ':8000/storage/poster/' . $filename;
         } else {
-            $filename = Post::findOrFail($id)->image;
+            $namafile = Post::findOrFail($id)->image;
         }
         $param = $req->all();
-        $param['image'] = env('APP_URL') . ':8000/storage/poster/' . $filename;
+        $param['image'] = $namafile;
         $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
         $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
         $param['actor'] = json_encode(array_map('trim', (explode(',', $req->actor))));
