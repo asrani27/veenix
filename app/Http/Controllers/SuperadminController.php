@@ -10,6 +10,8 @@ use App\Models\KurikulumDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Laravel\Facades\Image;
 
 class SuperadminController extends Controller
 {
@@ -80,13 +82,39 @@ class SuperadminController extends Controller
     }
     public function logo_update(Request $req)
     {
+        if ($req->logo != null) {
+            $validator = Validator::make($req->all(), [
+                'logo' => 'mimes:png,jpg,jpeg|max:1024',
+            ]);
+
+            if ($validator->fails()) {
+                Session::flash('error', 'Format Harus PNG/JPG max 1024');
+                return back();
+            }
+
+            $image = Image::read($req->file('logo'));
+            $filename = time() . '-' . str_replace(" ", "", $req->file('logo')->getClientOriginalName());
+
+            $destinationPathThumbnail = public_path('storage/poster/');
+
+            $image->resize(275, 50);
+            $image->save($destinationPathThumbnail . $filename);
+            if (config('app.env') == 'local') {
+                $namafile = config('app.url') . ':8000/storage/poster/' . $filename;
+            } else {
+                $namafile = config('app.url') . '/storage/poster/' . $filename;
+            }
+        } else {
+            $namafile = Setting::first()->logo;
+        }
+
         if (Setting::first() == null) {
             $n = new Setting();
-            $n->logo = $req->logo;
+            $n->logo = $namafile;
             $n->save();
         } else {
             Setting::first()->update([
-                'logo' => $req->logo
+                'logo' => $namafile
             ]);
         }
         Session::flash('success', 'diupdate');

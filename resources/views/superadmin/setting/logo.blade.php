@@ -10,12 +10,13 @@
                     <h3 class="card-title">Logo</h3>
                 </div>
                 <div class="card-body">
-                    <form method="post" action="/superadmin/logo">
+                    <form method="post" action="/superadmin/logo" enctype="multipart/form-data">
                     @csrf
                         <div class="form-group">
-                            <label>Link Logo Cooltext</label>
+                            <label>Upload Logo</label>
                             <div>
-                            <textarea class="form-control" rows="4" name="logo">{{$data == null ? null :$data->logo}}</textarea>
+                                <input type="file" name="logo"><br/>
+                                <img src="{{$data == null ? null :$data->logo}}">
                             </div>
                             <!-- /.input group -->
                         </div>
