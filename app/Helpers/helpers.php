@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Country;
 use App\Models\Post;
+use App\Models\Year;
 use App\Models\Genre;
 use DOMXPath as Xpath;
 use App\Models\Setting;
@@ -18,7 +20,15 @@ function logo()
 }
 function genre()
 {
-    return Genre::get();
+    return Genre::where('is_active', 'Y')->get();
+}
+function year()
+{
+    return Year::orderBy('id', 'desc')->get();
+}
+function country()
+{
+    return Country::get();
 }
 function checkGenapGanjil($semester, $matakuliah)
 {

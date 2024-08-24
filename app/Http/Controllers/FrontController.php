@@ -16,6 +16,21 @@ class FrontController extends Controller
             return view('welcome');
         }
     }
+    public function movieByGenre($genre)
+    {
+        $data = Post::where('genre', 'like', '%' . $genre . '%')->paginate(16);
+        return view('genre', compact('data', 'genre'));
+    }
+    public function movieByYear($year)
+    {
+        $data = Post::where('year', 'like', '%' . $year . '%')->paginate(16);
+        return view('year', compact('data', 'year'));
+    }
+    public function movieByCountry($country)
+    {
+        $data = Post::where('country', 'like', '%' . $country . '%')->paginate(16);
+        return view('country', compact('data', 'country'));
+    }
     public function detailMovie($slug)
     {
         $data = Post::where('slug', $slug)->first();

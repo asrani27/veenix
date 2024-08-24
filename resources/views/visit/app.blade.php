@@ -38,14 +38,6 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">GENRE</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              {{-- <table>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                </tr>
-              </table> --}}
-              
               @foreach (genre() as $item)
               <li><a href="/genre/{{$item->nama}}" class="dropdown-item">{{$item->nama}} </a></li>
               @endforeach
@@ -55,17 +47,17 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">COUNTRY</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Amerika </a></li>
-              <li><a href="#" class="dropdown-item">Europe </a></li>
-              <li><a href="#" class="dropdown-item">England </a></li>
+              @foreach (country() as $item)
+              <li><a href="/country/{{$item->nama}}" class="dropdown-item">{{$item->nama}} </a></li>
+              @endforeach
             </ul>
           </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">YEAR</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">2024 </a></li>
-              <li><a href="#" class="dropdown-item">2022 </a></li>
-              <li><a href="#" class="dropdown-item">2021 </a></li>
+              @foreach (year() as $item)
+              <li><a href="/year/{{$item->tahun}}" class="dropdown-item">{{$item->tahun}} </a></li>
+              @endforeach
             </ul>
           </li>
           <li class="nav-item dropdown">
