@@ -15,6 +15,9 @@ use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [FrontController::class, 'index']);
+Route::get('/tes', function () {
+    return view('tes');
+});
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
