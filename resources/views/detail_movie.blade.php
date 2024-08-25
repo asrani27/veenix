@@ -81,7 +81,7 @@
               <strong>IMDb: </strong> N/A<br/>
             </div>
             <div class="col-sm-3 text-center">
-              <img src="https://palapanews.com/wp-content/uploads/2018/06/space-iklan.png" width="250px">
+              <img src="https://palapanews.com/wp-content/uploads/2018/06/space-iklan.png" width="100%">
             </div>
           </div>
           
