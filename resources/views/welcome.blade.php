@@ -32,7 +32,16 @@
 
         <hr>
 
-        <h3>Latest Movies</h3>
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Latest Movies</h3>
+            </div>
+            <div class="col-sm-6">
+              <div class="float-sm-right">
+                <a href="#" class="btn btn-sm btn-primary">View More <i class="fa fa-arrow-right"></i> </a>
+              </div>
+            </div>
+        </div>
         <div class="row">
             @foreach (latestMovies() as $item)
             <div class="col-lg-2 col-6" style="max-width: 180px;">

@@ -39,6 +39,12 @@ class FrontController extends Controller
         $data = Post::where('country', 'like', '%' . $country . '%')->paginate(16);
         return view('country', compact('data', 'country'));
     }
+    public function latestMovies()
+    {
+        $data = Post::orderBy('id', 'desc')->paginate(32);
+        return view('latest', compact('data'));
+    }
+
     public function detailMovie($slug)
     {
         $data = Post::where('slug', $slug)->first();
