@@ -1,5 +1,5 @@
 @extends('visit.app')
-
+@push('meta')
 <title>VEENIX Nonton Film Negara : {{$country}} Subtitle Indonesia</title>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="description" content="VEENIX Nonton Film Negara : {{$country}} Subtitle Indonesia">
