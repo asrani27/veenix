@@ -19,7 +19,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-link"></i></span>
                             </div>
-                            <input type="text" class="form-control" name="url" placeholder="https://senatorpeters.com/deadpool-wolverine-2024/" required>
+                            <input type="text" class="form-control" name="url" value="{{old('url')}}" placeholder="https://senatorpeters.com/deadpool-wolverine-2024/" required>
                             </div>
                             <!-- /.input group -->
                         </div>

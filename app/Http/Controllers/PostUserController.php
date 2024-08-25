@@ -91,10 +91,15 @@ class PostUserController extends Controller
             $param = senatorPeters($req->url);
         }
 
-        //save
-        Post::create($param);
-
-        return redirect('/user/post');
+        $check = Post::where('slug', $param['slug'])->first();
+        if ($check == null) {
+            Post::create($param);
+            return redirect('/user/post');
+        } else {
+            Session::flash('error', 'Movie ini sudah di input');
+            request()->flash();
+            return back();
+        }
     }
 
     public function search()
