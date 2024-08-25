@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>VEENIX - LK21, INDOXXI, IDLIX, Situs Nonton Film Streaming Gratis Subtitle Indonesia</title>
- {{-- <meta name="csrf-token" content="{{ csrf_token() }}"> --}}
+ 
+  <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
