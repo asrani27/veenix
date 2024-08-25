@@ -1,4 +1,15 @@
 @extends('visit.app')
+@push('meta')
+<title>VEENIX Nonton Film Tahun : {{$year}} Subtitle Indonesia</title>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="description" content="VEENIX Nonton Film Tahun : {{$year}} Subtitle Indonesia">
+<meta property="og:locale" content="id_ID">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VEENIX Nonton Film Tahun : {{$year}} Subtitle Indonesia">
+<meta property="og:description" content="VEENIX Nonton Film Tahun : {{$year}} Subtitle Indonesia">
+<meta property="og:url" content="https://veenix.online/">
+<meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
+@endpush
 @push('css')
     
   <style>

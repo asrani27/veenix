@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VEENIX - LK21, INDOXXI, IDLIX, Situs Nonton Film Streaming Gratis Subtitle Indonesia</title>
+  @stack('meta')
  
   <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
 

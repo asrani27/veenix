@@ -1,4 +1,26 @@
 @extends('visit.app')
+@push('meta')
+<title>Nonton {{$data->title}} Subtitle Indonesia</title>
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="description" content="{{$data->description}}">
+<meta property="og:locale" content="id_ID">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nonton {{$data->title}} Subtitle Indonesia">
+<meta property="og:description" content="{{$data->description}}">
+<meta property="og:url" content="https://veenix.online/">
+<meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
+
+<meta name="copyright" content="VEENIX">
+<meta name="rating" content="general">
+<meta name="geo.placename" content="Indonesia">
+<meta name="geo.country" content="ID">
+<meta name="language" content="ID">
+<meta name="tgn.nation" content="Indonesia">
+<meta name="author" content="VEENIX">
+<meta name="distribution" content="global">
+<meta name="publisher" content="VEENIX, Inc.">
+<meta name="Slurp" content="all">
+@endpush
 @push('css')
     
 <style>
