@@ -38,7 +38,7 @@
             </div>
             <div class="col-sm-6">
               <div class="float-sm-right">
-                <a href="#" class="btn btn-sm btn-primary">View More <i class="fa fa-arrow-right"></i> </a>
+                <a href="/latest-movies" class="btn btn-sm btn-primary">View More <i class="fa fa-arrow-right"></i> </a>
               </div>
             </div>
         </div>
