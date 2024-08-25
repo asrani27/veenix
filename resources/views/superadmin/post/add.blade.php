@@ -29,6 +29,14 @@
                             </div>
                             <!-- /.input group -->
                         </div>
+                        <div class="form-group">
+                            <label>Support untuk situs :</label>
+        
+                            <div>
+                                senatorpeters.com, www.sbnews.co.id
+                            </div>
+                            <!-- /.input group -->
+                        </div>
                     </form>
                 </div>
             </div>

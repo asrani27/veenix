@@ -85,7 +85,8 @@ class PostController extends Controller
         $url = $req->url;
         $url = parse_url($url);
         $domain = $url['host'];
-        if ($domain == 'senatorpeters.com') {
+
+        if ($domain == 'senatorpeters.com' || $domain == 'www.sbnews.co.id') {
             $param = senatorPeters($req->url);
         }
 
