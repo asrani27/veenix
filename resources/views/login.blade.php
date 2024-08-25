@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="/muvnix/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/muvnix/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <link rel="stylesheet" href="/muvnix/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/notif/dist/css/iziToast.min.css">
+  <script src="/notif/dist/js/iziToast.min.js" type="text/javascript"></script>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
@@ -36,6 +38,7 @@
             </div>
           </div>
         </div>
+        <div id="cf-turnstile"></div>
         <div class="row">
           <div class="col-8">
             
@@ -57,5 +60,20 @@
 <script src="/muvnix/plugins/jquery/jquery.min.js"></script>
 <script src="/muvnix/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/muvnix/dist/js/adminlte.min.js"></script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
+<script>
+window.onloadTurnstileCallback = function () {
+    turnstile.render('#cf-turnstile', {
+        sitekey: '{{ config('turnstile.site_key') }}',
+        callback: function(token) {
+            console.log(`Challenge Success ${token}`);
+        },
+    });
+};
+</script>
+<script type="text/javascript">
+  @include('layouts.notif')
+</script>
 </body>
 </html>

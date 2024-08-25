@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use DerekCodes\TurnstileLaravel\TurnstileLaravel;
 
 class LoginController extends Controller
 {
@@ -26,25 +27,36 @@ class LoginController extends Controller
     }
     public function login(Request $req)
     {
-        $remember = $req->remember ? true : false;
-        $credential = $req->only('username', 'password');
-
-        if (Auth::attempt($credential, $remember)) {
-
-            if (Auth::user()->roles == 'superadmin') {
-                Session::flash('success', 'Selamat Datang');
-                return redirect('/superadmin/beranda');
-            } elseif (Auth::user()->roles == 'anggota') {
-                Session::flash('success', 'Selamat Datang');
-                return redirect('/user/beranda');
-            } else {
-                Session::flash('success', 'Selamat Datang');
-                return 'role lain';
-            }
-        } else {
-            Session::flash('error', 'username/password salah');
-            $req->flash();
+        if ($req->get('cf-turnstile-response') == null) {
+            Session::flash('warning', 'Checklist Captcha');
             return back();
+        } else {
+            $turnstile = new TurnstileLaravel;
+            $response = $turnstile->validate($req->get('cf-turnstile-response'));
+
+            if ($response['status'] == true) {
+
+                $remember = $req->remember ? true : false;
+                $credential = $req->only('username', 'password');
+
+                if (Auth::attempt($credential, $remember)) {
+
+                    if (Auth::user()->roles == 'superadmin') {
+                        Session::flash('success', 'Selamat Datang');
+                        return redirect('/superadmin/beranda');
+                    } elseif (Auth::user()->roles == 'anggota') {
+                        Session::flash('success', 'Selamat Datang');
+                        return redirect('/user/beranda');
+                    } else {
+                        Session::flash('success', 'Selamat Datang');
+                        return 'role lain';
+                    }
+                } else {
+                    Session::flash('error', 'username/password salah');
+                    $req->flash();
+                    return back();
+                }
+            }
         }
     }
 }
