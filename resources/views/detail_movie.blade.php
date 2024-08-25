@@ -26,10 +26,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-body" style="padding: 0px;">
           <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" allowfullscreen="yes" src="{{$data->link_video}}" allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-        <!-- /.card -->
       </div>
 
       <div class="card card-primary">
