@@ -58,7 +58,10 @@
                               <strong>Actors :</strong> {{$item->actor}}
                               
                             </td>
-                            <td class="text-center"><a href="{{$item->link_video}}" class="btn btn-primary" target="_blank"><i class="fa fa-play"></i> {{$item->quality}}</a></td>
+                            <td class="text-center"><a href="{{$item->link_video}}" class="btn btn-primary" target="_blank"><i class="fa fa-play"></i> {{$item->quality}}</a>
+                            <br/><br/>
+                            <strong>Views : </strong> {{$item->views}}
+                            </td>
                             <td class="text-center">
                               @if ($item->link_download == null)
                                   -
