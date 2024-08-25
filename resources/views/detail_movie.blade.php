@@ -1,5 +1,13 @@
 @extends('visit.app')
-
+@push('css')
+    
+<style>
+  iframe { 
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+@endpush
 @section('content')
 
 <div class="container">
@@ -18,7 +26,9 @@
   </div>
   <div class="row">
     <div class="col-lg-12">
-          <iframe src="{{$data->link_video}}" frameborder="0" width="100%" height="540px" scrolling="no" allowfullscreen="true" ></iframe>
+          <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" allowfullscreen="yes" src="{{$data->link_video}}" allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+          {{-- <iframe src="{{$data->link_video}}" frameborder="0" width="100%" height="540px" scrolling="no" allowfullscreen="true" ></iframe> --}}
          
           <div class="card card-primary">
             <div class="card-header">
