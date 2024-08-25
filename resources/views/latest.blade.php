@@ -12,7 +12,7 @@
 @endpush
 @section('content')
     <div class="container" style="max-width: 1440px">
-        <h3>Latest Movie : {{$country}}</h3>
+        <h3>Latest Movie :</h3>
         <div class="row">
             @foreach ($data as $item)
             <div class="col-lg-2 col-6" style="max-width: 180px;">
