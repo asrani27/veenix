@@ -43,7 +43,7 @@ class FrontController extends Controller
     {
         $data = Post::where('slug', $slug)->first();
         //update views 
-        Post::where('slug', $slug)->first()->views + 1;
+        Post::where('slug', $slug)->first()->update(['views' => $data->views + 1]);
         return view('detail_movie', compact('data'));
     }
     public function detailSeries($slug)
