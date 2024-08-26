@@ -33,6 +33,7 @@ class DeadLinkVideo implements ShouldQueue
         if ($resp->body() === 'Content Has Been Remove') {
             $this->data->update(['dead_link_video' => 1]);
         } else {
+            $this->data->update(['dead_link_video' => 0]);
         }
     }
 }
