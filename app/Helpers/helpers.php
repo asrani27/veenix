@@ -19,6 +19,10 @@ function noLinkDownload()
 {
     return Post::where('link_download', null)->count();
 }
+function totalMoview()
+{
+    return Post::count();
+}
 function histats()
 {
     return Setting::first() == null ? null : Setting::first()->histats;
