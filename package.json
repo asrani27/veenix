@@ -13,6 +13,7 @@
     "dependencies": {
         "@uppy/core": "^4.1.2",
         "@uppy/dashboard": "^4.0.3",
+        "@uppy/drag-drop": "^4.0.2",
         "@uppy/tus": "^4.0.1"
     }
 }

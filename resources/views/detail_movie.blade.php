@@ -20,6 +20,7 @@
 <meta name="distribution" content="global">
 <meta name="publisher" content="VEENIX, Inc.">
 <meta name="Slurp" content="all">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 @push('css')
     
