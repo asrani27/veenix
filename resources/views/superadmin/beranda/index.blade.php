@@ -67,6 +67,7 @@
     </div>
     <div class="col-md-3 col-sm-6 col-12">
       <a href="/superadmin/deadlinkvideo" class="btn btn-sm btn-primary btn-block"><i class="fa fa-sync"></i> Proses</a>
+      <a href="/superadmin/deadlinkvideo/list" class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> Lihat</a>
     </div>
     <div class="col-md-3 col-sm-6 col-12">
     </div>

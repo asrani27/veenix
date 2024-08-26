@@ -26,6 +26,19 @@ class SuperadminController extends Controller
         Session::flash('success', 'Diproses');
         return back();
     }
+    public function deadlinkvideo_list()
+    {
+        $data = Post::where('dead_link_video', 1)->get();
+        return view('superadmin.beranda.deadlink', compact('data'));
+    }
+    public function deadlinkvideo_update(Request $req, $id)
+    {
+        $data = Post::find($id)->update([
+            'dead_link_video' => 0,
+            'link_video' => $req->link_video
+        ]);
+        return back();
+    }
     public function gantipass()
     {
         return view('superadmin.gantipass');
