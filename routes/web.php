@@ -35,6 +35,7 @@ Route::middleware(['superadmin'])->group(function () {
     Route::prefix('superadmin')->group(function () {
         Route::get('/deadlinkvideo', [SuperadminController::class, 'deadlinkvideo']);
         Route::get('/deadlinkvideo/list', [SuperadminController::class, 'deadlinkvideo_list']);
+        Route::get('/deadlinkvideo/list/search', [SuperadminController::class, 'deadlinkvideo_search']);
         Route::post('/deadlinkvideo/list/{id}', [SuperadminController::class, 'deadlinkvideo_update']);
         Route::get('/beranda', [SuperadminController::class, 'beranda']);
         Route::get('/user', [SuperadminController::class, 'user']);

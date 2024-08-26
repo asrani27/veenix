@@ -28,7 +28,11 @@
       width: 100%;
       aspect-ratio: 16 / 9;
     }
-  </style>
+    #uppy{
+      width: 100%;
+      height: 500px;
+    }
+</style>
 @endpush
 @section('content')
 
@@ -47,9 +51,9 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div class="card">
+      {{-- <div class="card">
           <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" allowfullscreen="yes" src="{{$data->link_video}}" allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      </div> --}}
 
       <div class="card card-primary">
         <div class="card-header">
@@ -120,6 +124,8 @@
 
 </div>
     
+
+<div id="uppy">uppy</div>
 @endsection
 
 @push('js')

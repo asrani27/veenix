@@ -11,6 +11,17 @@
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
+
+                  <form method="get" action="/superadmin/deadlinkvideo/list/search">
+                    @csrf
+                    <div class="input-group">
+                      <input type="text" class="form-control" name="search" value="{{old('search')}}" placeholder="search" required>
+                      <span class="input-group-append">
+                        <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-search"></i></button>
+                      </span>
+                    </div>
+                  </form>
+                  <br/>
                   <table class="table table-bordered table-hover">
                     <thead>
                       <tr class="bg-gradient-primary">

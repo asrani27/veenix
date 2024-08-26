@@ -9,6 +9,7 @@
         "derekcodes/turnstile-laravel": "^1.1",
         "eelcol/laravel-html-dom": "^2.0",
         "intervention/image-laravel": "^1.3",
+        "kalynasolutions/laravel-tus": "^1.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "phpoffice/phpspreadsheet": "^2.2",

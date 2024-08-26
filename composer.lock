@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2f411ba646e634ab821657de4f97144d",
+    "content-hash": "272549f11833e46a62a845272d793e0a",
     "packages": [
         {
             "name": "brick/math",
@@ -1386,6 +1386,85 @@
                 }
             ],
             "time": "2024-06-15T08:20:20+00:00"
+        },
+        {
+            "name": "kalynasolutions/laravel-tus",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kalynasolutions/laravel-tus.git",
+                "reference": "7bbe2cbeac4899107d4e9b6421865f3c1c6fa3a7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kalynasolutions/laravel-tus/zipball/7bbe2cbeac4899107d4e9b6421865f3c1c6fa3a7",
+                "reference": "7bbe2cbeac4899107d4e9b6421865f3c1c6fa3a7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^10.0|^11.0",
+                "php": "^8.2",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.15",
+                "nunomaduro/collision": "^7.10|^8.1",
+                "nunomaduro/larastan": "^2.9",
+                "orchestra/testbench": "^8.22|^9.0",
+                "pestphp/pest": "^2.34",
+                "pestphp/pest-plugin-arch": "^2.7",
+                "pestphp/pest-plugin-laravel": "^2.3",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan-deprecation-rules": "^1.1",
+                "phpstan/phpstan-phpunit": "^1.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KalynaSolutions\\Tus\\TusServiceProvider"
+                    ],
+                    "aliases": {
+                        "Tus": "KalynaSolutions\\Tus\\Facades\\Tus"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KalynaSolutions\\Tus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Artur Khylskyi",
+                    "email": "arthur.patriot@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel package for handling resumable file uploads with tus protocol and native Uppy.js support without additional tus servers",
+            "homepage": "https://github.com/kalynasolutions/laravel-tus",
+            "keywords": [
+                "arthurpatriot",
+                "kalynasolutions",
+                "laravel",
+                "laravel-tus",
+                "tus"
+            ],
+            "support": {
+                "issues": "https://github.com/kalynasolutions/laravel-tus/issues",
+                "source": "https://github.com/kalynasolutions/laravel-tus/tree/v1.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/ArthurPatriot",
+                    "type": "buy_me_a_coffee"
+                }
+            ],
+            "time": "2024-06-01T16:16:53+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3737,6 +3816,66 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-package-tools",
+            "version": "1.16.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-package-tools.git",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "reference": "ddf678e78d7f8b17e5cdd99c0c3413a4a6592e53",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.28|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.5",
+                "orchestra/testbench": "^7.7|^8.0",
+                "pestphp/pest": "^1.22",
+                "phpunit/phpunit": "^9.5.24",
+                "spatie/pest-plugin-test-time": "^1.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\LaravelPackageTools\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Tools for creating Laravel packages",
+            "homepage": "https://github.com/spatie/laravel-package-tools",
+            "keywords": [
+                "laravel-package-tools",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-package-tools/issues",
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.16.4"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-20T07:29:11+00:00"
         },
         {
             "name": "symfony/clock",
