@@ -16,7 +16,8 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/tes', function () {
-    return view('tes');
+    $resp = Http::get('https://gdriveplayer.club/player/ajJTZURsYTB3akhrNkJXMG5BbldQUXI1aFhHaWdZOVJRQU56Z0h0Qmg4NVJaTmRUNDQzTnQ2MVlSNVRzT1FZdS9CZEhOTStxV0RLVC92WGtZamQ4b3dqRklVL2tpZ3JPeTZwWlpwWlh2NG89');
+    dd($resp->body());
 });
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
@@ -32,6 +33,7 @@ Route::get('/year/{year}', [FrontController::class, 'movieByYear']);
 
 Route::middleware(['superadmin'])->group(function () {
     Route::prefix('superadmin')->group(function () {
+        Route::get('/deadlinkvideo', [SuperadminController::class, 'deadlinkvideo']);
         Route::get('/beranda', [SuperadminController::class, 'beranda']);
         Route::get('/user', [SuperadminController::class, 'user']);
         Route::get('/user/add', [SuperadminController::class, 'user_add']);

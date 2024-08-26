@@ -37,8 +37,9 @@
         <span class="info-box-icon bg-warning"><i class="fas fa-globe"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Drama</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-text">Dead Link Video</span>
+          <span class="info-box-number">{{deadLinkVideo()}}
+          </span>
         </div>
         <!-- /.info-box-content -->
       </div>
@@ -50,13 +51,24 @@
         <span class="info-box-icon bg-danger"><i class="fas fa-comment"></i></span>
 
         <div class="info-box-content">
-          <span class="info-box-text">Comment</span>
-          <span class="info-box-number">0</span>
+          <span class="info-box-text">No Link Download</span>
+          <span class="info-box-number">{{noLinkDownload()}}</span>
         </div>
         <!-- /.info-box-content -->
       </div>
       <!-- /.info-box -->
     </div>
     <!-- /.col -->
+</div>
+<div class="row">
+    <div class="col-md-3 col-sm-6 col-12">
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+      <a href="/superadmin/deadlinkvideo" class="btn btn-sm btn-primary btn-block"><i class="fa fa-sync"></i> Proses</a>
+    </div>
+    <div class="col-md-3 col-sm-6 col-12">
+    </div>
 </div>
 @endsection

@@ -2,19 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Setting;
+use App\Jobs\DeadLinkVideo;
 use Illuminate\Http\Request;
 use App\Models\KurikulumDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
 
 class SuperadminController extends Controller
 {
+    public function deadlinkvideo()
+    {
+        foreach (Post::get() as $uri) {
+            DeadLinkVideo::dispatch($uri);
+        }
+        Session::flash('success', 'Diproses');
+        return back();
+    }
     public function gantipass()
     {
         return view('superadmin.gantipass');

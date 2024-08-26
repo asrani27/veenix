@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\DeadLinkVideo;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -86,8 +87,12 @@ class PostController extends Controller
         $url = parse_url($url);
         $domain = $url['host'];
 
-        if ($domain == 'senatorpeters.com' || $domain == 'www.sbnews.co.id') {
+        if ($domain == 'senatorpeters.com' || $domain == 'www.sbnews.co.id' || $domain == 'www.paris-hostel.biz' || $domain == 'paris-hostel.biz') {
             $param = senatorPeters($req->url);
+        }
+
+        if ($domain == 'midasfilm.com') {
+            $param = midasFilm($req->url);
         }
 
         $check = Post::where('slug', $param['slug'])->first();

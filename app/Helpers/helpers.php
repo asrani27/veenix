@@ -1,15 +1,24 @@
 <?php
 
-use App\Models\Country;
 use App\Models\Post;
 use App\Models\Year;
 use App\Models\Genre;
 use DOMXPath as Xpath;
+use App\Models\Country;
 use App\Models\Setting;
 use DOMDocument as DOM;
+use voku\helper\HtmlDomParser;
 use Illuminate\Support\Facades\Http;
 use Eelcol\LaravelHtmlDom\Facades\SuperDom;
 
+function deadLinkVideo()
+{
+    return Post::where('dead_link_video', 1)->count();
+}
+function noLinkDownload()
+{
+    return Post::where('link_download', null)->count();
+}
 function histats()
 {
     return Setting::first() == null ? null : Setting::first()->histats;
@@ -82,6 +91,29 @@ function fixAmps(&$html, $offset)
     }
 }
 
+function midasFilm($uri)
+{
+
+    $dom = HtmlDomParser::file_get_html($uri);
+    dd($dom);
+    $html = file_get_contents($uri);
+    $html = preg_replace('/\s+/', ' ', trim($html));
+    fixAmps($html, 0);
+    $dom = new DOM();
+    @$dom->loadHTML($html);
+    $xpath = new Xpath($dom);
+
+    $data['title'] = $xpath->query('//div[@class="data"]//h1')->item(0)->nodeValue;
+    $data['slug'] = Str::of($data['title'])->slug('-')->value();
+    $data['description'] = $xpath->query('//div[@class="wp-content"]//p')->item(0)->nodeValue;
+    $data['link_video'] = $xpath->query('//div[@class="pframe"]//iframe/@src')->length;
+
+    $ch = curl_init($uri);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    $response = curl_exec($ch);
+
+    dd($xpath, $response);
+}
 function senatorPeters($uri)
 {
     $html = file_get_contents($uri);
@@ -94,8 +126,8 @@ function senatorPeters($uri)
     $data['title'] = $xpath->query('//h1[@class="entry-title"]')->item(0)->nodeValue;
     $data['slug'] = Str::of($data['title'])->slug('-')->value();
     $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
-    $data['link_video'] = $xpath->query('//div[@class="iframe-container"]//iframe/@src')->item(0)->nodeValue;
-    $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue;
+    $data['link_video'] = trim($xpath->query('//div[@class="iframe-container"]//iframe/@src')->item(0)->nodeValue);
+    $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : trim($xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue);
     if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue;
     } else {
