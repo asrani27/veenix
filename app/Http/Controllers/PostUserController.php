@@ -88,13 +88,14 @@ class PostUserController extends Controller
         $url = parse_url($url);
         $domain = $url['host'];
 
-        if ($domain == 'thetender.us' || $domain == 'www.sbnews.co.id' || $domain == 'www.paris-hostel.biz' || $domain == 'paris-hostel.biz') {
+        if ($domain == 'www.sbnews.co.id' || $domain == 'www.paris-hostel.biz' || $domain == 'paris-hostel.biz') {
             $param = senatorPeters($req->url);
         }
 
-        if ($domain == 'midasfilm.com') {
-            $param = 's';
+        if ($domain == 'thetender.us') {
+            $param = thetender($req->url);
         }
+
 
         $check = Post::where('slug', $param['slug'])->first();
         if ($check == null) {
