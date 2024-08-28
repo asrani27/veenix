@@ -90,16 +90,21 @@
               @endforeach
               <br/>
 
-              <strong>Director: </strong>Taika Waititi<br/>
+              <strong>Director: </strong>{{$data->director}}<br/>
 
-              <strong>Actors: </strong>Cate Blanchett, Chris Hemsworth, Jeff Goldblum, Karl Urban, Mark Ruffalo, Tessa Thompson, Tom Hiddleston<br/>
+              <strong>Actors: </strong>
+              
+              @foreach (json_decode($data->actor) as $item)
+                  {{$item}}, 
+              @endforeach
+              <br/>
 
-              <strong>Country: </strong>USA<br/>
-              <strong>Duration: </strong> 170 min<br/>
+              <strong>Country: </strong>{{$data->country}}<br/>
+              <strong>Duration: </strong> {{$data->duration}}<br/>
 
-              <strong>Release: </strong> 2017<br/>
+              <strong>Release: </strong> {{$data->release}}<br/>
 
-              <strong>IMDb: </strong> N/A<br/>
+              <strong>IMDb: </strong>{{$data->imdb == null ? 'N/A': $data->imdb}}<br/>
               <strong>Quality: </strong> {{$data->quality}}<br/>
             </div>
             <div class="col-sm-3 text-center">

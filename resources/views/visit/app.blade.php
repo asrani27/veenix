@@ -63,13 +63,8 @@
               @endforeach
             </ul>
           </li>
-          <li class="nav-item dropdown">
-            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">TV SERIES</a>
-            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-              <li><a href="#" class="dropdown-item">Series Korea </a></li>
-              <li><a href="#" class="dropdown-item">Series China </a></li>
-              <li><a href="#" class="dropdown-item">Series Thailand </a></li>
-            </ul>
+          <li class="nav-item">
+            <a href="/request" class="nav-link" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">REQUEST</a>
           </li>
         </ul>
 

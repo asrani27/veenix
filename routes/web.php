@@ -22,6 +22,7 @@ Route::get('/tes', function () {
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
+Route::get('/request', [FrontController::class, 'request']);
 Route::get('/movie/{slug}', [FrontController::class, 'detailMovie']);
 Route::get('/latest-movies', [FrontController::class, 'latestMovies']);
 Route::get('/search', [FrontController::class, 'search']);

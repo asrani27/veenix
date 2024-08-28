@@ -16,6 +16,10 @@ class FrontController extends Controller
             return view('welcome');
         }
     }
+    public function request()
+    {
+        return view('request');
+    }
     public function search()
     {
         $search = request()->search;
