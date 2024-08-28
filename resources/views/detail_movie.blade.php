@@ -23,29 +23,8 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 @push('css')
-<style>
 
-  #social-links {
-      margin: 0 auto;
-      max-width: 500px;
-  }
 
-  #social-links ul li {
-
-      display: inline-block;
-
-  }          
-
-  #social-links ul li a{
-      padding: 10px;
-      border: 1px solid #ccc;
-      margin: 1px;
-      font-size: 25px;
-      background: #e3e3ea;
-
-  }
-
-</style>
 <style>
   iframe { 
       width: 100%;
@@ -171,7 +150,7 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('js/share.js') }}"></script>
+
 <script>
   (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');
