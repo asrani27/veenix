@@ -111,7 +111,16 @@
               <strong>Quality: </strong> {{$data->quality}}<br/>
             </div>
             <div class="col-sm-3 text-center">
-              <img src="https://palapanews.com/wp-content/uploads/2018/06/space-iklan.png" width="100%">
+              <script type="text/javascript">
+                atOptions = {
+                  'key' : '55687ce0e3fb33e799931945d583fc70',
+                  'format' : 'iframe',
+                  'height' : 250,
+                  'width' : 300,
+                  'params' : {}
+                };
+              </script>
+              <script type="text/javascript" src="//www.topcreativeformat.com/55687ce0e3fb33e799931945d583fc70/invoke.js"></script>
             </div>
           </div>
           
