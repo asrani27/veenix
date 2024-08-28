@@ -33,7 +33,7 @@
                             <label>Support untuk situs :</label>
         
                             <div>
-                                senatorpeters.com, www.sbnews.co.id
+                                thetender.us, www.sbnews.co.id, www.paris-hostel.biz
                             </div>
                             <!-- /.input group -->
                         </div>

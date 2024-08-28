@@ -29,6 +29,14 @@
                             </div>
                             <!-- /.input group -->
                         </div>
+                        <div class="form-group">
+                            <label>Support untuk situs :</label>
+        
+                            <div>
+                                thetender.us, www.sbnews.co.id, www.paris-hostel.biz
+                            </div>
+                            <!-- /.input group -->
+                        </div>
                     </form>
                 </div>
             </div>
