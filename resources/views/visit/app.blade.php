@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="/muvnix/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/muvnix/dist/css/adminlte.min.css"> 
   
-  @vite('resources/js/app.js')
+  {{-- @vite('resources/js/app.js') --}}
   @stack('css')
   
 </head>
