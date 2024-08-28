@@ -23,7 +23,29 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
 @push('css')
-    
+<style>
+
+  #social-links {
+      margin: 0 auto;
+      max-width: 500px;
+  }
+
+  #social-links ul li {
+
+      display: inline-block;
+
+  }          
+
+  #social-links ul li a{
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 1px;
+      font-size: 25px;
+      background: #e3e3ea;
+
+  }
+
+</style>
 <style>
   iframe { 
       width: 100%;
@@ -55,7 +77,7 @@
       <div class="card">
           <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" allowfullscreen="yes" src="{{$data->link_video}}" allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-
+      {!! $shareButton !!}
       <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">LINK DOWNLOAD</h3>
@@ -149,7 +171,7 @@
 @endsection
 
 @push('js')
-
+<script src="{{ asset('js/share.js') }}"></script>
 <script>
   (function() { // DON'T EDIT BELOW THIS LINE
   var d = document, s = d.createElement('script');

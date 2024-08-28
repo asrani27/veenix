@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Share;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -52,9 +53,18 @@ class FrontController extends Controller
     public function detailMovie($slug)
     {
         $data = Post::where('slug', $slug)->first();
+
+        $shareButton = Share::page(url('/movie/' . $slug), 'Nonton film ini...',)
+            ->facebook()
+            ->telegram()
+            ->linkedin()
+            ->whatsapp()
+            ->reddit()
+            ->twitter()
+            ->pinterest();
         //update views 
         Post::where('slug', $slug)->first()->update(['views' => $data->views + 1]);
-        return view('detail_movie', compact('data'));
+        return view('detail_movie', compact('data', 'shareButton'));
     }
     public function detailSeries($slug)
     {
