@@ -53,7 +53,7 @@
                             <textarea class="form-control" rows="3" name="link_video">{{$data->link_video}}</textarea>
                         </div>
                         <div class="form-group">
-                            <label>Link Download</label>
+                            <label>Link Download (bila lebih dari 1 Pisahkan dengan tanda comma ,)</label>
                             <textarea class="form-control" rows="3" name="link_download">{{$data->link_download}}</textarea>
                         </div>
                         <div class="form-group">
