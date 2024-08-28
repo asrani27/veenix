@@ -36,6 +36,11 @@ class PostController extends Controller
         $data->actor = implode(', ', json_decode($data->actor));
         $data->country = implode(', ', json_decode($data->country));
 
+        if ($data->link_download == null) {
+        } else {
+            $data->link_download = implode(', ', json_decode($data->link_download));
+        }
+
         return view('superadmin.post.edit', compact('data'));
     }
     public function update(Request $req, $id)
@@ -70,6 +75,7 @@ class PostController extends Controller
         $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
         $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
         $param['actor'] = json_encode(array_map('trim', (explode(',', $req->actor))));
+        $param['link_download'] = json_encode(array_map('trim', (explode(',', $req->link_download))));
 
         $data = Post::findOrFail($id)->update($param);
         return redirect('/superadmin/post');
@@ -96,6 +102,11 @@ class PostController extends Controller
         if ($domain == 'thetender.us') {
             $param = thetender($req->url);
         }
+
+        if ($domain == 'sf2.savefilm21.digital') {
+            $param = sf21($req->url);
+        }
+
 
         $check = Post::where('slug', $param['slug'])->first();
         if ($check == null) {

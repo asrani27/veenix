@@ -67,7 +67,9 @@
         </div>
         <div class="card-body">
           @if ($data->link_download != null)
-            <a href="{{$data->link_download}}" class="btn btn-primary" target="_blank"><i class="fas fa-play"></i> DOWNLOAD</a>
+            @foreach (json_decode($data->link_download) as $key => $item)
+              <a href="{{$item}}"  class="btn btn-primary" target="_blank"><i class="fas fa-download"></i> Download {{$key + 1}}</a> 
+            @endforeach
           @endif
         </div>
       </div>
