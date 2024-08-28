@@ -99,7 +99,10 @@
               @endforeach
               <br/>
 
-              <strong>Country: </strong>{{$data->country}}<br/>
+              <strong>Country: </strong>
+              @foreach (json_decode($data->country) as $item)
+                  {{$item}}, 
+              @endforeach<br/>
               <strong>Duration: </strong> {{$data->duration}}<br/>
 
               <strong>Release: </strong> {{$data->release}}<br/>
