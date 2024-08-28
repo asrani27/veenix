@@ -38,7 +38,7 @@
 
         <div class="info-box-content">
           <span class="info-box-text">Dead Link Video</span>
-          <span class="info-box-number">{{deadLinkVideo()}}
+          <span class="info-box-number">0
           </span>
         </div>
         <!-- /.info-box-content -->
@@ -60,7 +60,7 @@
     </div>
     <!-- /.col -->
 </div>
-<div class="row">
+{{-- <div class="row">
     <div class="col-md-3 col-sm-6 col-12">
     </div>
     <div class="col-md-3 col-sm-6 col-12">
@@ -71,5 +71,5 @@
     </div>
     <div class="col-md-3 col-sm-6 col-12">
     </div>
-</div>
+</div> --}}
 @endsection
