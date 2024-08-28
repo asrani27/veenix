@@ -31,11 +31,6 @@ class SuperadminController extends Controller
         $data = Post::where('dead_link_video', 1)->get();
         return view('superadmin.beranda.deadlink', compact('data'));
     }
-    public function deadlinkvideo_list()
-    {
-        $data = Post::where('dead_link_video', 1)->get();
-        return view('superadmin.beranda.deadlink', compact('data'));
-    }
 
     public function deadlinkvideo_update(Request $req, $id)
     {

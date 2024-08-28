@@ -204,3 +204,92 @@ function senatorPeters($uri)
 
     return $data;
 }
+
+function thetender($uri)
+{
+    $html = file_get_contents($uri);
+    $html = preg_replace('/\s+/', ' ', trim($html));
+    fixAmps($html, 0);
+    $dom = new DOM();
+    @$dom->loadHTML($html);
+    $xpath = new Xpath($dom);
+
+
+    $data['title'] = $xpath->query('//h1[@class="entry-title"]')->item(0)->nodeValue;
+    $data['slug'] = Str::of($data['title'])->slug('-')->value();
+    $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
+    $data['link_video'] = trim($xpath->query('//div[@class="gmr-embed-responsive"]//iframe/@data-litespeed-src')->item(0)->nodeValue);
+    $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : trim($xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue);
+    //dd($xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue, $dom);
+    if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
+        $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@data-src')->item(0)->nodeValue;
+    } else {
+        $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@data-src')->item(1)->nodeValue;
+    }
+    $detail = $xpath->query('//div[@class="gmr-moviedata"]');
+
+    foreach ($detail as $key => $d) {
+        //get Genres
+        if (strpos($d->nodeValue, 'Genre') !== false) {
+            $genres = explode(',', str_replace("Genre: ", "", $d->nodeValue));
+            $genre = array();
+            foreach ($genres as $item) {
+                $genre[] = trim($item);
+            }
+            $genre = json_encode($genre);
+        }
+
+        // Get Quality
+        if (strpos($d->nodeValue, 'Quality') !== false) {
+            $quality = str_replace("Quality: ", "", $d->nodeValue);
+        }
+
+        // Get Country
+        if (strpos($d->nodeValue, 'Country') !== false) {
+
+            $countrys = explode(',', str_replace("Country:", "", $d->nodeValue));
+            $country = array();
+            foreach ($countrys as $item) {
+                $country[] = trim($item);
+            }
+            $country = json_encode($country);
+        }
+        // Get Actor
+        if (strpos($d->nodeValue, 'Cast') !== false) {
+
+            $actors = explode(',', str_replace("Cast:", "", $d->nodeValue));
+            $actor = array();
+            foreach ($actors as $item) {
+                $actor[] = trim($item);
+            }
+            $actor = json_encode($actor);
+        }
+        // Get Year
+        if (strpos($d->nodeValue, 'Year') !== false) {
+            $year = str_replace("Year: ", "", $d->nodeValue);
+        }
+        // Get duration
+        if (strpos($d->nodeValue, 'Duration') !== false) {
+            $duration = str_replace("Duration: ", "", $d->nodeValue);
+        }
+        // Get Release
+        if (strpos($d->nodeValue, 'Release') !== false) {
+            $release = str_replace("Release:", "", $d->nodeValue);
+        }
+        // Get Director
+        if (strpos($d->nodeValue, 'Director') !== false) {
+            $director = str_replace("Director:", "", $d->nodeValue);
+        }
+    }
+    $data['genre'] = $genre;
+    $data['quality'] = $quality;
+    $data['country'] = $country;
+    $data['year'] = $year;
+    $data['duration'] = $duration;
+    $data['release'] = $release;
+    $data['actor'] = $actor;
+    $data['director'] = $director;
+    $data['username'] = Auth::user()->username;
+
+    return $data;
+}
