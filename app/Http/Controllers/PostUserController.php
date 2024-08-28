@@ -18,6 +18,10 @@ class PostUserController extends Controller
             $item->genre = implode(", ", json_decode($item->genre));
             $item->country = implode(", ", json_decode($item->country));
             $item->actor = implode(", ", json_decode($item->actor));
+            if ($item->link_download != null) {
+                $item->link_download = json_decode($item->link_download);
+            }
+
             return $item;
         });
 
@@ -36,6 +40,11 @@ class PostUserController extends Controller
         $data->actor = implode(', ', json_decode($data->actor));
         $data->country = implode(', ', json_decode($data->country));
 
+
+        if ($data->link_download == null) {
+        } else {
+            $data->link_download = implode(', ', json_decode($data->link_download));
+        }
         return view('user.post.edit', compact('data'));
     }
     public function update(Request $req, $id)
