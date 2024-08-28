@@ -109,6 +109,7 @@ function sf21($uri)
     $data['slug'] = Str::of($data['title'])->slug('-')->value();
     $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
     $data['link_video'] = null;
+
     $link_download = array();
 
     $count_download = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->length;
@@ -120,9 +121,7 @@ function sf21($uri)
         }
         $data['link_download'] = json_encode($link_download);
     }
-    // $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : trim($xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue);
 
-    //dd($dom, $data);
     if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue;
     } else {
@@ -210,7 +209,18 @@ function senatorPeters($uri)
     $data['slug'] = Str::of($data['title'])->slug('-')->value();
     $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
     $data['link_video'] = trim($xpath->query('//div[@class="iframe-container"]//iframe/@src')->item(0)->nodeValue);
-    $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : trim($xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue);
+    $link_download = array();
+
+    $count_download = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->length;
+    if ($count_download == 0) {
+        $data['link_download'] = null;
+    } else {
+        for ($x = 0; $x < $count_download; $x++) {
+            $link_download[] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item($x)->nodeValue;
+        }
+        $data['link_download'] = json_encode($link_download);
+    }
+
     if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue;
     } else {
@@ -298,8 +308,18 @@ function thetender($uri)
     $data['slug'] = Str::of($data['title'])->slug('-')->value();
     $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
     $data['link_video'] = trim($xpath->query('//div[@class="gmr-embed-responsive"]//iframe/@data-litespeed-src')->item(0)->nodeValue);
-    $data['link_download'] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0) == null ? null : trim($xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item(0)->nodeValue);
-    //dd($xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue, $dom);
+    $link_download = array();
+
+    $count_download = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->length;
+    if ($count_download == 0) {
+        $data['link_download'] = null;
+    } else {
+        for ($x = 0; $x < $count_download; $x++) {
+            $link_download[] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item($x)->nodeValue;
+        }
+        $data['link_download'] = json_encode($link_download);
+    }
+
     if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@data-src')->item(0)->nodeValue;
     } else {
