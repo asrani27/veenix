@@ -18,6 +18,9 @@ class PostController extends Controller
             $item->genre = implode(", ", json_decode($item->genre));
             $item->country = implode(", ", json_decode($item->country));
             $item->actor = implode(", ", json_decode($item->actor));
+            if ($item->link_download != null) {
+                $item->link_download = json_decode($item->link_download);
+            }
             return $item;
         });
 
@@ -75,7 +78,11 @@ class PostController extends Controller
         $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
         $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
         $param['actor'] = json_encode(array_map('trim', (explode(',', $req->actor))));
-        $param['link_download'] = json_encode(array_map('trim', (explode(',', $req->link_download))));
+        if ($req->link_download == null) {
+            $param['link_download'] = null;
+        } else {
+            $param['link_download'] = json_encode(array_map('trim', (explode(',', $req->link_download))));
+        }
 
         $data = Post::findOrFail($id)->update($param);
         return redirect('/superadmin/post');

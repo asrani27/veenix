@@ -66,7 +66,10 @@
                               @if ($item->link_download == null)
                                   -
                               @else
-                              <a href="{{$item->link_download}}" class="btn btn-info" target="_blank"><i class="fa fa-download"></i></a>
+                              
+                              @foreach ($item->link_download as $key => $link)
+                              <a href="{{$link}}" class="btn btn-info" target="_blank">{{$key+1}}</a>
+                              @endforeach
                               @endif
                             </td>
                             <td>
