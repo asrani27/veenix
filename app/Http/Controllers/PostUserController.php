@@ -109,6 +109,11 @@ class PostUserController extends Controller
             $param = thetender($req->url);
         }
 
+        if ($domain == 'sf2.savefilm21.digital') {
+            $param = sf21($req->url);
+        }
+
+
 
         $check = Post::where('slug', $param['slug'])->first();
         if ($check == null) {
