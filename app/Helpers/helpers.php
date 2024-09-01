@@ -96,7 +96,7 @@ function fixAmps(&$html, $offset)
 }
 
 
-function sf21($uri)
+function muviproIndo($uri)
 {
     $html = file_get_contents($uri);
     $html = preg_replace('/\s+/', ' ', trim($html));
@@ -108,8 +108,12 @@ function sf21($uri)
     $data['title'] = $xpath->query('//h1[@class="entry-title"]')->item(0)->nodeValue;
     $data['slug'] = Str::of($data['title'])->slug('-')->value();
     $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
-    $data['link_video'] = null;
 
+    if ($xpath->query('//div[@class="iframe-container"]//iframe/@src')->length == 0) {
+        $data['link_video'] = null;
+    } else {
+        $data['link_video'] = trim($xpath->query('//div[@class="iframe-container"]//iframe/@src')->item(0)->nodeValue);
+    }
     $link_download = array();
 
     $count_download = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->length;
@@ -129,6 +133,16 @@ function sf21($uri)
     }
     $detail = $xpath->query('//div[@class="gmr-moviedata"]');
 
+
+    $genre = null;
+    $quality = null;
+    $country = null;
+    $actor = null;
+    $year = null;
+    $duration = null;
+    $release = null;
+    $director = null;
+
     foreach ($detail as $key => $d) {
         //get Genres
         if (strpos($d->nodeValue, 'Genre') !== false) {
@@ -139,6 +153,7 @@ function sf21($uri)
             }
             $genre = json_encode($genre);
         }
+
 
         // Get Quality
         if (strpos($d->nodeValue, 'Kualitas') !== false) {
@@ -155,6 +170,7 @@ function sf21($uri)
             }
             $country = json_encode($country);
         }
+
         // Get Actor
         if (strpos($d->nodeValue, 'Pemain') !== false) {
 
@@ -165,23 +181,28 @@ function sf21($uri)
             }
             $actor = json_encode($actor);
         }
+
         // Get Year
         if (strpos($d->nodeValue, 'Tahun') !== false) {
             $year = str_replace("Tahun: ", "", $d->nodeValue);
         }
+
         // Get duration
         if (strpos($d->nodeValue, 'Durasi') !== false) {
             $duration = str_replace("Durasi: ", "", $d->nodeValue);
         }
+
         // Get Release
         if (strpos($d->nodeValue, 'Rilis') !== false) {
             $release = str_replace("Rilis:", "", $d->nodeValue);
         }
+
         // Get Director
         if (strpos($d->nodeValue, 'Direksi') !== false) {
             $director = str_replace("Direksi:", "", $d->nodeValue);
         }
     }
+
     $data['genre'] = $genre;
     $data['quality'] = $quality;
     $data['country'] = $country;
@@ -195,106 +216,7 @@ function sf21($uri)
     return $data;
 }
 
-
-function senatorPeters($uri)
-{
-    $html = file_get_contents($uri);
-    $html = preg_replace('/\s+/', ' ', trim($html));
-    fixAmps($html, 0);
-    $dom = new DOM();
-    @$dom->loadHTML($html);
-    $xpath = new Xpath($dom);
-
-    $data['title'] = $xpath->query('//h1[@class="entry-title"]')->item(0)->nodeValue;
-    $data['slug'] = Str::of($data['title'])->slug('-')->value();
-    $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
-    $data['link_video'] = trim($xpath->query('//div[@class="iframe-container"]//iframe/@src')->item(0)->nodeValue);
-    $link_download = array();
-
-    $count_download = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->length;
-    if ($count_download == 0) {
-        $data['link_download'] = null;
-    } else {
-        for ($x = 0; $x < $count_download; $x++) {
-            $link_download[] = $xpath->query('//ul[@class="list-inline gmr-download-list clearfix"]//li//a/@href')->item($x)->nodeValue;
-        }
-        $data['link_download'] = json_encode($link_download);
-    }
-
-    if ($xpath->query('//figure[@class="pull-left"]//img/@src')->length == 1) {
-        $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(0)->nodeValue;
-    } else {
-        $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(1)->nodeValue;
-    }
-    $detail = $xpath->query('//div[@class="gmr-moviedata"]');
-
-    foreach ($detail as $key => $d) {
-        //get Genres
-        if (strpos($d->nodeValue, 'Genre') !== false) {
-            $genres = explode(',', str_replace("Genre: ", "", $d->nodeValue));
-            $genre = array();
-            foreach ($genres as $item) {
-                $genre[] = trim($item);
-            }
-            $genre = json_encode($genre);
-        }
-
-        // Get Quality
-        if (strpos($d->nodeValue, 'Kualitas') !== false) {
-            $quality = str_replace("Kualitas: ", "", $d->nodeValue);
-        }
-
-        // Get Country
-        if (strpos($d->nodeValue, 'Negara') !== false) {
-
-            $countrys = explode(',', str_replace("Negara:", "", $d->nodeValue));
-            $country = array();
-            foreach ($countrys as $item) {
-                $country[] = trim($item);
-            }
-            $country = json_encode($country);
-        }
-        // Get Actor
-        if (strpos($d->nodeValue, 'Pemain') !== false) {
-
-            $actors = explode(',', str_replace("Pemain:", "", $d->nodeValue));
-            $actor = array();
-            foreach ($actors as $item) {
-                $actor[] = trim($item);
-            }
-            $actor = json_encode($actor);
-        }
-        // Get Year
-        if (strpos($d->nodeValue, 'Tahun') !== false) {
-            $year = str_replace("Tahun: ", "", $d->nodeValue);
-        }
-        // Get duration
-        if (strpos($d->nodeValue, 'Durasi') !== false) {
-            $duration = str_replace("Durasi: ", "", $d->nodeValue);
-        }
-        // Get Release
-        if (strpos($d->nodeValue, 'Rilis') !== false) {
-            $release = str_replace("Rilis:", "", $d->nodeValue);
-        }
-        // Get Director
-        if (strpos($d->nodeValue, 'Direksi') !== false) {
-            $director = str_replace("Direksi:", "", $d->nodeValue);
-        }
-    }
-    $data['genre'] = $genre;
-    $data['quality'] = $quality;
-    $data['country'] = $country;
-    $data['year'] = $year;
-    $data['duration'] = $duration;
-    $data['release'] = $release;
-    $data['actor'] = $actor;
-    $data['director'] = $director;
-    $data['username'] = Auth::user()->username;
-
-    return $data;
-}
-
-function thetender($uri)
+function muviproEnglish($uri)
 {
     $html = file_get_contents($uri);
     $html = preg_replace('/\s+/', ' ', trim($html));
@@ -326,6 +248,15 @@ function thetender($uri)
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@data-src')->item(1)->nodeValue;
     }
     $detail = $xpath->query('//div[@class="gmr-moviedata"]');
+
+    $genre = null;
+    $quality = null;
+    $country = null;
+    $actor = null;
+    $year = null;
+    $duration = null;
+    $release = null;
+    $director = null;
 
     foreach ($detail as $key => $d) {
         //get Genres

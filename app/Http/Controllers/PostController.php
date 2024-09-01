@@ -96,23 +96,15 @@ class PostController extends Controller
 
     public function scrap(Request $req)
     {
-        $url = $req->url;
+        $html = file_get_contents($req->url);
+        $html = preg_replace('/\s+/', ' ', trim($html));
 
-        $url = parse_url($url);
-        $domain = $url['host'];
-
-
-        if ($domain == 'www.sbnews.co.id' || $domain == 'www.paris-hostel.biz' || $domain == 'paris-hostel.biz') {
-            $param = senatorPeters($req->url);
+        if (strpos($html, 'posting') !== false) {
+            $param = muviproIndo($req->url);
+        } else {
+            $param = muviproEnglish($req->url);
         }
 
-        if ($domain == 'thetender.us') {
-            $param = thetender($req->url);
-        }
-
-        if ($domain == 'sf2.savefilm21.digital') {
-            $param = sf21($req->url);
-        }
 
 
         $check = Post::where('slug', $param['slug'])->first();
