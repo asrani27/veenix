@@ -29,14 +29,7 @@
                             </div>
                             <!-- /.input group -->
                         </div>
-                        <div class="form-group">
-                            <label>Support untuk situs :</label>
-        
-                            <div>
-                                thetender.us, www.sbnews.co.id, www.paris-hostel.biz, sf2.savefilm21.digital
-                            </div>
-                            <!-- /.input group -->
-                        </div>
+                        
                     </form>
                 </div>
             </div>
