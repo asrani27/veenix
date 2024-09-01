@@ -15,13 +15,26 @@ class PostUserController extends Controller
     {
         $data = Post::where('username', Auth::user()->username)->orderBy('id', 'DESC')->paginate(10);
         $data->getCollection()->transform(function ($item) {
-            $item->genre = implode(", ", json_decode($item->genre));
-            $item->country = implode(", ", json_decode($item->country));
-            $item->actor = implode(", ", json_decode($item->actor));
+            if ($item->genre == null) {
+                $item->genre = null;
+            } else {
+                $item->genre = implode(", ", json_decode($item->genre));
+            }
+            if ($item->country == null) {
+                $item->country = null;
+            } else {
+                $item->country = implode(", ", json_decode($item->country));
+            }
+
+            if ($item->actor == null) {
+                $item->actor = null;
+            } else {
+                $item->actor = implode(", ", json_decode($item->actor));
+            }
+
             if ($item->link_download != null) {
                 $item->link_download = json_decode($item->link_download);
             }
-
             return $item;
         });
 
