@@ -27,8 +27,9 @@ class PostController extends Controller
             }
 
             if ($item->actor == null) {
-                $item->actor = implode(", ", json_decode($item->actor));
+                $item->actor = null;
             } else {
+                $item->actor = implode(", ", json_decode($item->actor));
             }
 
             if ($item->link_download != null) {
