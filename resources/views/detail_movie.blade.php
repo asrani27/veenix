@@ -88,24 +88,30 @@
               <strong>Views: </strong>{{$data->views}}<br/>
 
               <strong>Genre: </strong>
-              @foreach (json_decode($data->genre) as $item)
-                  <a href="/genre/{{$item}}">{{$item}}</a>, 
-              @endforeach
+
+              @if ($data->genre != null)
+                @foreach (json_decode($data->genre) as $item)
+                    <a href="/genre/{{$item}}">{{$item}}</a>, 
+                @endforeach
+              @endif
               <br/>
 
               <strong>Director: </strong>{{$data->director}}<br/>
 
               <strong>Actors: </strong>
-              
-              @foreach (json_decode($data->actor) as $item)
-                  {{$item}}, 
-              @endforeach
-              <br/>
+              @if ($data->actor != null)
+                @foreach (json_decode($data->actor) as $item)
+                {{$item}}, 
+                @endforeach
+                <br/>
+              @endif
 
               <strong>Country: </strong>
-              @foreach (json_decode($data->country) as $item)
-                  {{$item}}, 
-              @endforeach<br/>
+              @if ($data->country != null)
+                @foreach (json_decode($data->country) as $item)
+                    {{$item}}, 
+                @endforeach<br/>
+              @endif
               <strong>Duration: </strong> {{$data->duration}}<br/>
 
               <strong>Release: </strong> {{$data->release}}<br/>
