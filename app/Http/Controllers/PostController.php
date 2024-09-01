@@ -49,9 +49,21 @@ class PostController extends Controller
     public function edit($id)
     {
         $data = Post::findOrFail($id);
-        $data->genre = implode(', ', json_decode($data->genre));
-        $data->actor = implode(', ', json_decode($data->actor));
-        $data->country = implode(', ', json_decode($data->country));
+        if ($data->genre == null) {
+            $data->genre = null;
+        } else {
+            $data->genre = implode(', ', json_decode($data->genre));
+        }
+        if ($data->actor == null) {
+            $data->actor = null;
+        } else {
+            $data->actor = implode(', ', json_decode($data->actor));
+        }
+        if ($data->country == null) {
+            $data->country = null;
+        } else {
+            $data->country = implode(', ', json_decode($data->country));
+        }
 
         if ($data->link_download == null) {
         } else {
