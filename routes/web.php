@@ -31,6 +31,7 @@ Route::get('/series/{slug}', [FrontController::class, 'detailSeries']);
 Route::get('/genre/{genre}', [FrontController::class, 'movieByGenre']);
 Route::get('/country/{country}', [FrontController::class, 'movieByCountry']);
 Route::get('/year/{year}', [FrontController::class, 'movieByYear']);
+Route::get('/tv/{{slug}}/season-{season}/episode-{episode}', [TvController::class, 'detailSeries']);
 
 
 Route::middleware(['superadmin'])->group(function () {

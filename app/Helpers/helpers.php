@@ -5,6 +5,7 @@ use App\Models\Year;
 use App\Models\Genre;
 use DOMXPath as Xpath;
 use App\Models\Country;
+use App\Models\Episode;
 use App\Models\Setting;
 use DOMDocument as DOM;
 use voku\helper\HtmlDomParser;
@@ -73,7 +74,7 @@ function latestMovies()
 
 function latestSeries()
 {
-    $data = Post::orderBy('id', 'desc')->take(16)->get();
+    $data = Episode::orderBy('id', 'desc')->take(16)->get();
     return $data;
 }
 function fixAmps(&$html, $offset)
