@@ -13,6 +13,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\SuperadminController;
+use App\Http\Controllers\TvController;
 
 Route::get('/', [FrontController::class, 'index']);
 Route::get('/tes', function () {
@@ -66,6 +67,19 @@ Route::middleware(['superadmin'])->group(function () {
         Route::get('/post/edit/{id}', [PostController::class, 'edit']);
         Route::post('/post/edit/{id}', [PostController::class, 'update']);
         Route::get('/post/delete/{id}', [PostController::class, 'delete']);
+
+        Route::get('/tv', [TvController::class, 'index']);
+        Route::get('/tv/search', [TvController::class, 'search']);
+        Route::get('/tv/episode/delete/{id}', [TvController::class, 'deleteEpisode']);
+        Route::get('/tv/episode/edit/{id}', [TvController::class, 'editEpisode']);
+        Route::post('/tv/episode/edit/{id}', [TvController::class, 'updateEpisode']);
+        Route::get('/tv/episode/{id}', [TvController::class, 'episode']);
+        Route::post('/tv/episode/{id}', [TvController::class, 'storeEpisode']);
+        Route::get('/tv/add', [TvController::class, 'add']);
+        Route::post('/tv/add', [TvController::class, 'scrap']);
+        Route::get('/tv/edit/{id}', [TvController::class, 'edit']);
+        Route::post('/tv/edit/{id}', [TvController::class, 'update']);
+        Route::get('/tv/delete/{id}', [TvController::class, 'delete']);
     });
 });
 

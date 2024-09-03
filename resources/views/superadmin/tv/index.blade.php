@@ -5,12 +5,12 @@
 <div class="container-fluid">
     <div class="row">
       <div class="col-lg-4">
-        <a href="/superadmin/post/add" class="btn btn-primary btn-md">
+        <a href="/superadmin/tv/add" class="btn btn-primary btn-md">
           <i class="fas fa-plus"></i> Scrapping
         </a>
       </div>
       <div class="col-lg-8">
-        <form method="get" action="/superadmin/post/search">
+        <form method="get" action="/superadmin/tv/search">
           @csrf
           <div class="input-group">
             <input type="text" class="form-control" name="search" value="{{old('search')}}" placeholder="search" required>
@@ -26,7 +26,7 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header bg-gradient-secondary">
-                  <h3 class="card-title">Data Movie</h3>
+                  <h3 class="card-title">Data TV Series</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -37,8 +37,6 @@
                         <th>Image</th>
                         <th>Title</th>
                         <th>Description</th>
-                        <th>Streaming</th>
-                        <th>Download</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -58,23 +56,12 @@
                               <strong>Actors :</strong> {{$item->actor}}
                               
                             </td>
-                            <td class="text-center"><a href="{{$item->link_video}}" class="btn btn-primary" target="_blank"><i class="fa fa-play"></i> {{$item->quality}}</a>
-                            <br/><br/>
-                            <strong>Views : </strong> {{$item->views}}
-                            </td>
-                            <td class="text-center">
-                              @if ($item->link_download == null)
-                                  -
-                              @else
-                              
-                                @foreach ($item->link_download as $key => $link)
-                                <a href="{{$link}}" class="btn btn-info" target="_blank">{{$key+1}}</a>
-                                @endforeach
-                              @endif
-                            </td>
                             <td>
-                              <a href="/superadmin/post/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                              <a href="/superadmin/post/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
+                              <div class="btn-group">
+                              <a href="/superadmin/tv/episode/{{$item->id}}" class="btn btn-sm btn-primary"><i class="fa fa-play"></i> Episode </a>
+                              <a href="/superadmin/tv/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i> Edit</a>
+                              <a href="/superadmin/tv/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i> Delete</a>
+                              </div>
                             </td>
                         </tr>
                         @endforeach
