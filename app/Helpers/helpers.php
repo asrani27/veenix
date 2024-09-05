@@ -20,6 +20,14 @@ function noLinkDownload()
 {
     return Post::where('link_download', null)->count();
 }
+function movie()
+{
+    return Post::get();
+}
+function topmovie()
+{
+    return Post::where('top', 'Y')->get();
+}
 function totalMoview()
 {
     return Post::count();

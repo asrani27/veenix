@@ -26,6 +26,25 @@ class SuperadminController extends Controller
         Session::flash('success', 'Diproses');
         return back();
     }
+    public function topmovie(Request $req)
+    {
+        if (topmovie()->count() == 8) {
+            Session::flash('info', 'Top Movie Maks 8, Hapus dulu jika ingin menambahkan');
+            return back();
+        } else {
+            $data = Post::find($req->movie_id);
+            $data->top = 'Y';
+            $data->save();
+            return back();
+        }
+    }
+
+    public function deletetopmovie($id)
+    {
+        Post::find($id)->delete();
+        Session::flash('success', 'dihapus');
+        return back();
+    }
     public function deadlinkvideo_list()
     {
         $data = Post::where('dead_link_video', 1)->get();

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @push('css')
+<link rel="stylesheet" href="/muvnix/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="/muvnix/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 @endpush
 @section('content')
@@ -60,16 +62,63 @@
     </div>
     <!-- /.col -->
 </div>
-{{-- <div class="row">
-    <div class="col-md-3 col-sm-6 col-12">
+<h5 class="mb-2">Top Movie</h5>
+<div class="row">
+    <div class="col-10">
+      <form method="post" action="/superadmin/topmovie">
+        @csrf
+      <select class="form-control select2" name="movie_id" required>
+        <option value="">-</option>
+        @foreach (movie() as $item)
+            <option value="{{$item->id}}">{{$item->title}}</option>
+        @endforeach
+      </select>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
+    <div class="col-2">
+      <button type="submit" class="btn btn-primary btn-block">Tambahkan</button>
     </div>
-    <div class="col-md-3 col-sm-6 col-12">
-      <a href="/superadmin/deadlinkvideo" class="btn btn-sm btn-primary btn-block"><i class="fa fa-sync"></i> Proses</a>
-      <a href="/superadmin/deadlinkvideo/list" class="btn btn-sm btn-danger btn-block"><i class="fa fa-eye"></i> Lihat</a>
-    </div>
-    <div class="col-md-3 col-sm-6 col-12">
-    </div>
-</div> --}}
+  </form>
+  <br/><br/>
+  <div class="col-12">
+      <div class="card">
+        <table class="table table-sm table-bordered">
+          <thead>
+            <tr>
+              <td>#</td>
+              <td>Image</td>
+              <td>Title</td>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (topmovie() as $key=> $item)
+                <tr>
+                  <td>{{$key + 1}}</td>
+                  <td><img src="{{$item->image}}"></td>
+                  <td>{{$item->title}}</td>
+                  <td>
+                    <a href="/superadmin/topmovie/delete/{{$item->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i> Delete</a>
+                  </td>
+                </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
 @endsection
+
+@push('js')
+<script src="/muvnix/plugins/select2/js/select2.full.min.js"></script>
+<script>
+   $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+  })
+</script>
+@endpush

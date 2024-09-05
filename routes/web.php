@@ -37,6 +37,8 @@ Route::get('/tv/{slug}/season-{season}/episode-{episode}', [FrontController::cla
 
 Route::middleware(['superadmin'])->group(function () {
     Route::prefix('superadmin')->group(function () {
+        Route::post('/topmovie', [SuperadminController::class, 'topmovie']);
+        Route::get('/topmovie/delete/{id}', [SuperadminController::class, 'deletetopmovie']);
         Route::get('/deadlinkvideo', [SuperadminController::class, 'deadlinkvideo']);
         Route::get('/deadlinkvideo/list', [SuperadminController::class, 'deadlinkvideo_list']);
         Route::get('/deadlinkvideo/list/search', [SuperadminController::class, 'deadlinkvideo_search']);
