@@ -93,7 +93,7 @@
             @foreach (topmovie() as $key=> $item)
                 <tr>
                   <td>{{$key + 1}}</td>
-                  <td><img src="{{$item->image}}" width="160px"></td>
+                  <td><img src="{{$item->image}}" width="20%"></td>
                   <td>{{$item->title}}</td>
                   <td>
                     <a href="/superadmin/topmovie/delete/{{$item->id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i> Delete</a>
