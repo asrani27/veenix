@@ -35,7 +35,7 @@
     <div class="container" style="max-width: 1440px">
         <h3>Top Movies</h3>
         <div class="row">
-            @foreach (topMovies() as $item)
+            @foreach (topmovie() as $item)
             <div class="col-lg-2 col-6" style="max-width: 180px;">
                 <div class="card card-widget widget-user">
                     <a href="/movie/{{$item->slug}}">
