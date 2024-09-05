@@ -92,8 +92,7 @@
                     <a href="/tv/{{$item->tvseries->slug}}/season-{{$item->season}}/episode-{{$item->episode}}">
                         <div class="widget-user-header text-white text-right" style="background: url('{{$item->tvseries->image}}') center center; height:260px;border-radius:.25rem; padding:0px;box-shadow: -1px -53px 89px 2px rgba(0,0,0,0.8) inset; -webkit-box-shadow: -1px -53px 89px 2px rgba(0,0,0,0.8) inset; -moz-box-shadow: -1px -53px 89px 2px rgba(0,0,0,0.8) inset;">
                             <span class="badge bg-gradient-warning" style="padding:6px 6px; margin-top:0px; font-size:16px">S{{$item->season}} - Eps. {{$item->episode}}</span><br/>
-                            
-                            @include('title');
+                            @include('title_series');
                         </div>
                     </a>
                 </div>
