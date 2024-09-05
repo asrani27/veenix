@@ -16,6 +16,15 @@
     </a>
   </li>
   
+  <li class="nav-item">
+    <a href="/user/tv" class="nav-link">
+      <i class="nav-icon fas fa-edit"></i>
+      <p>
+        Post Tv Series
+      </p>
+    </a>
+  </li>
+
   <li class="nav-header">SETTING</li>
   <li class="nav-item">
     <a href="/user/gantipassword" class="nav-link">

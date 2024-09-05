@@ -73,10 +73,8 @@
                             <tr>
                                 <td class="text-center">{{$item->season}}</td>
                                 <td class="text-center">{{$item->episode}}</td>
-                                <td>{{$item->title}}<br/>
-
+                                <td>{{$item->title}} <br/>
                                   <small>{{$item->description}}</small>
-
                                 </td>
                                 <td class="text-center"><a href="{{$item->link_video}}" class="btn btn-primary" target="_blank"><i class="fa fa-play"></i> {{$item->quality}}</a>
                                 
@@ -92,8 +90,8 @@
                                   @endif
                                 </td>
                                 <td class="text-center">
-                                    <a href="/superadmin/tv/episode/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                                    <a href="/superadmin/tv/episode/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
+                                    <a href="/user/tv/episode/edit/{{$item->id}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
+                                    <a href="/user/tv/episode/delete/{{$item->id}}" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin dihapus?');"><i class="fa fa-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
