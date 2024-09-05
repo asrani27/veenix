@@ -102,7 +102,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-2 text-center">
-              <img src="{{$data->image}}" width="185px" height="275px">
+              <img src="{{$data->tvseries->image}}" width="185px" height="275px">
             </div>
             <div class="col-sm-7" style="padding-left:25px">
               <h4><strong>{{$data->tvseries->title}} : {{$data->title}} </strong></h4>
