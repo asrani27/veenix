@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Share;
+use App\Models\Tv;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -66,9 +67,12 @@ class FrontController extends Controller
         Post::where('slug', $slug)->first()->update(['views' => $data->views + 1]);
         return view('detail_movie', compact('data', 'shareButton'));
     }
-    public function detailSeries($slug)
+    public function detailSeries($slug, $season, $episode)
     {
-        $data = Post::where('slug', $slug)->first();
-        return view('detail_series', compact('data'));
+        $tv = Tv::where('slug', $slug)->first();
+        $semuaEpisode = $tv->episode;
+        $data = $tv->episode->where('season', $season)->where('episode', $episode)->first();
+
+        return view('detail_series', compact('data', 'semuaEpisode'));
     }
 }

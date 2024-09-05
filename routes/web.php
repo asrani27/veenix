@@ -27,11 +27,11 @@ Route::get('/request', [FrontController::class, 'request']);
 Route::get('/movie/{slug}', [FrontController::class, 'detailMovie']);
 Route::get('/latest-movies', [FrontController::class, 'latestMovies']);
 Route::get('/search', [FrontController::class, 'search']);
-Route::get('/series/{slug}', [FrontController::class, 'detailSeries']);
+//Route::get('/series/{slug}', [FrontController::class, 'detailSeries']);
 Route::get('/genre/{genre}', [FrontController::class, 'movieByGenre']);
 Route::get('/country/{country}', [FrontController::class, 'movieByCountry']);
 Route::get('/year/{year}', [FrontController::class, 'movieByYear']);
-Route::get('/tv/{{slug}}/season-{season}/episode-{episode}', [TvController::class, 'detailSeries']);
+Route::get('/tv/{slug}/season-{season}/episode-{episode}', [FrontController::class, 'detailSeries']);
 
 
 Route::middleware(['superadmin'])->group(function () {
