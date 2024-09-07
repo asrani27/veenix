@@ -160,8 +160,9 @@ class TvController extends Controller
             $dom = new DOM();
             @$dom->loadHTML($html);
             $xpath = new Xpath($dom);
+
             if ($xpath->query('//div[@class="entry-content entry-content-single"]//p')->length == 0) {
-                $data['description'] == null;
+                $data['description'] = null;
             } else {
                 $data['description'] = $xpath->query('//div[@class="entry-content entry-content-single"]//p')->item(0)->nodeValue;
             }
