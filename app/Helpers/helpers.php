@@ -237,10 +237,10 @@ function muviproIndoTv($uri)
     return $data;
 }
 
-function muviproIndo($uri)
+function muviproIndo($html)
 {
-    $html = file_get_contents($uri);
-    $html = preg_replace('/\s+/', ' ', trim($html));
+    // $html = file_get_contents($uri);
+    // $html = preg_replace('/\s+/', ' ', trim($html));
     fixAmps($html, 0);
     $dom = new DOM();
     @$dom->loadHTML($html);
@@ -273,7 +273,6 @@ function muviproIndo($uri)
         $data['image'] = $xpath->query('//figure[@class="pull-left"]//img/@src')->item(1)->nodeValue;
     }
     $detail = $xpath->query('//div[@class="gmr-moviedata"]');
-
 
     $genre = null;
     $quality = null;
@@ -357,10 +356,10 @@ function muviproIndo($uri)
     return $data;
 }
 
-function muviproEnglish($uri)
+function muviproEnglish($html)
 {
-    $html = file_get_contents($uri);
-    $html = preg_replace('/\s+/', ' ', trim($html));
+    // $html = file_get_contents($uri);
+    // $html = preg_replace('/\s+/', ' ', trim($html));
     fixAmps($html, 0);
     $dom = new DOM();
     @$dom->loadHTML($html);

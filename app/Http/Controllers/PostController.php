@@ -122,13 +122,39 @@ class PostController extends Controller
 
     public function scrap(Request $req)
     {
-        $html = file_get_contents($req->url);
+        // URL yang akan di-scrape
+        $url = $req->url;
+
+        // Inisialisasi cURL
+        $ch = curl_init();
+
+        // Set opsi cURL
+        curl_setopt($ch, CURLOPT_URL, $url); // Set URL tujuan
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Agar hasil dikembalikan sebagai string, bukan langsung ditampilkan
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // Ikuti redirect jika ada
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Lewati verifikasi SSL (opsional, hanya jika ada masalah SSL)
+        curl_setopt($ch, CURLOPT_USERAGENT, "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"); // Set User-Agent seperti browser
+
+        // Eksekusi permintaan cURL
+        $response = curl_exec($ch);
+
+        // Cek apakah ada error
+        if (curl_errno($ch)) {
+            // Tampilkan error jika ada
+            $html = 'Error: ' . curl_error($ch);
+        } else {
+            // Tampilkan hasil scraping (HTML dari halaman yang diakses)
+            $html = $response;
+        }
+        // Tutup sesi cURL
+        curl_close($ch);
+
         $html = preg_replace('/\s+/', ' ', trim($html));
 
         if (strpos($html, 'posting') !== false) {
-            $param = muviproIndo($req->url);
+            $param = muviproIndo($html);
         } else {
-            $param = muviproEnglish($req->url);
+            $param = muviproEnglish($html);
         }
 
 
