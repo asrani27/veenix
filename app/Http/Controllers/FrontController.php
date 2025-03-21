@@ -7,6 +7,7 @@ use App\Models\Tv;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class FrontController extends Controller
 {
@@ -26,7 +27,32 @@ class FrontController extends Controller
     {
         $search = request()->search;
 
-        $data = Post::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(48);
+        $data1 = Post::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->get();
+        $data2 = Tv::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->get();
+        // Gabungkan kedua collection
+        $mergedData = $data1->merge($data2);
+
+        // Konversi ke array agar bisa digunakan dalam pagination
+        $mergedDataArray = $mergedData->toArray();
+
+        // Ambil halaman saat ini dari request (default 1)
+        $page = request()->get('page', 1);
+
+        // Tentukan jumlah item per halaman
+        $perPage = 40;
+
+        // Hitung offset untuk data yang akan ditampilkan
+        $offset = ($page - 1) * $perPage;
+
+        // Ambil data yang sesuai dengan halaman saat ini
+        $items = array_slice($mergedDataArray, $offset, $perPage);
+
+        // Buat LengthAwarePaginator
+        $data = new LengthAwarePaginator($items, count($mergedDataArray), $perPage, $page, [
+            'path' => request()->url(),
+            'query' => request()->query(),
+        ]);
+
         request()->flash();
         return view('search', compact('data', 'search'));
     }
