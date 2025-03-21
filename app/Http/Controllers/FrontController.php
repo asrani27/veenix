@@ -26,28 +26,28 @@ class FrontController extends Controller
     {
         $search = request()->search;
 
-        $data = Post::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(32);
+        $data = Post::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(48);
         request()->flash();
         return view('search', compact('data', 'search'));
     }
     public function movieByGenre($genre)
     {
-        $data = Post::where('genre', 'like', '%' . $genre . '%')->orderBy('id', 'desc')->paginate(32);
+        $data = Post::where('genre', 'like', '%' . $genre . '%')->orderBy('id', 'desc')->paginate(48);
         return view('genre', compact('data', 'genre'));
     }
     public function movieByYear($year)
     {
-        $data = Post::where('release', 'like', '%' . $year . '%')->orderBy('id', 'desc')->paginate(32);
+        $data = Post::where('release', 'like', '%' . $year . '%')->orderBy('id', 'desc')->paginate(48);
         return view('year', compact('data', 'year'));
     }
     public function movieByCountry($country)
     {
-        $data = Post::where('country', 'like', '%' . $country . '%')->orderBy('id', 'desc')->paginate(32);
+        $data = Post::where('country', 'like', '%' . $country . '%')->orderBy('id', 'desc')->paginate(48);
         return view('country', compact('data', 'country'));
     }
     public function latestMovies()
     {
-        $data = Post::orderBy('id', 'desc')->paginate(32);
+        $data = Post::orderBy('id', 'desc')->paginate(48);
         return view('latest', compact('data'));
     }
 
