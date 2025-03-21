@@ -111,12 +111,14 @@ class PostController extends Controller
         }
 
         $data = Post::findOrFail($id)->update($param);
+        Session::flash('success', 'DiUpdate');
         return redirect('/superadmin/post');
     }
 
     public function delete($id)
     {
         Post::findOrFail($id)->delete();
+        Session::flash('success', 'Dihapus');
         return back();
     }
 
@@ -162,6 +164,7 @@ class PostController extends Controller
         $check = Post::where('slug', $param['slug'])->first();
         if ($check == null) {
             Post::create($param);
+            Session::flash('success', 'Disimpan');
             return redirect('/superadmin/post');
         } else {
             Session::flash('error', 'Movie ini sudah di input');
