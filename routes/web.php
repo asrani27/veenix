@@ -26,6 +26,8 @@ Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
 Route::get('/request', [FrontController::class, 'request']);
 Route::get('/movie/{slug}', [FrontController::class, 'detailMovie']);
+Route::get('/tv', [FrontController::class, 'tvSeries']);
+Route::get('/tv/{slug}', [FrontController::class, 'detailTv']);
 Route::get('/latest-movies', [FrontController::class, 'latestMovies']);
 Route::get('/search', [FrontController::class, 'search']);
 //Route::get('/series/{slug}', [FrontController::class, 'detailSeries']);
