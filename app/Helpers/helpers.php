@@ -82,7 +82,7 @@ function latestMovies()
 
 function latestSeries()
 {
-    $data = Episode::orderBy('id', 'desc')->take(16)->get();
+    $data = Episode::orderBy('id', 'desc')->take(24)->get();
     return $data;
 }
 function fixAmps(&$html, $offset)
