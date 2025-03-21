@@ -118,7 +118,8 @@
                                 <i class="fa fa-star"></i> {{$item->imdb}}</span>
 
                             <span class="badge bg-gradient-yellow"
-                                style="padding:6px 6px; margin-top:0px; font-size:14px">{{$item->quality}}</span>
+                                style="padding:6px 6px; margin-top:0px; font-size:14px">S{{$item->season}}, Ep
+                                {{$item->episode}}</span>
                         </div>
                         @include('title_series')
                     </div>
