@@ -32,10 +32,11 @@ class FrontController extends Controller
         // Gabungkan kedua collection
         $mergedData = $data1->merge($data2);
 
-        // Konversi ke array agar bisa digunakan dalam pagination
-        $mergedDataArray = $mergedData->toArray();
 
-        // Ambil halaman saat ini dari request (default 1)
+        // Pastikan tetap dalam bentuk Collection
+        $mergedData = collect($mergedData);
+
+        // Ambil halaman saat ini dari request (default ke 1)
         $page = request()->get('page', 1);
 
         // Tentukan jumlah item per halaman
@@ -45,10 +46,10 @@ class FrontController extends Controller
         $offset = ($page - 1) * $perPage;
 
         // Ambil data yang sesuai dengan halaman saat ini
-        $items = array_slice($mergedDataArray, $offset, $perPage);
+        $items = $mergedData->slice($offset, $perPage);
 
-        // Buat LengthAwarePaginator
-        $data = new LengthAwarePaginator($items, count($mergedDataArray), $perPage, $page, [
+        // Buat LengthAwarePaginator dengan collection, bukan array
+        $data = new LengthAwarePaginator($items, $mergedData->count(), $perPage, $page, [
             'path' => request()->url(),
             'query' => request()->query(),
         ]);
