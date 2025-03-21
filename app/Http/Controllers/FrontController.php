@@ -55,11 +55,11 @@ class FrontController extends Controller
         $data = Tv::orderBy('id', 'desc')->paginate(48);
         return view('tvseries', compact('data'));
     }
-    public function detailTv($slug, $season, $episode)
+    public function detailTv($slug)
     {
         $tv = Tv::where('slug', $slug)->first();
         $semuaEpisode = $tv->episode;
-        $data = $tv->episode->where('season', $season)->where('episode', $episode)->first();
+        $data = $tv;
 
         return view('detail_tv', compact('data', 'semuaEpisode'));
     }
