@@ -26,23 +26,23 @@ class FrontController extends Controller
     {
         $search = request()->search;
 
-        $data = Post::where('title', 'like', '%' . $search . '%')->paginate(32);
+        $data = Post::where('title', 'like', '%' . $search . '%')->orderBy('id', 'desc')->paginate(32);
         request()->flash();
         return view('search', compact('data', 'search'));
     }
     public function movieByGenre($genre)
     {
-        $data = Post::where('genre', 'like', '%' . $genre . '%')->paginate(32);
+        $data = Post::where('genre', 'like', '%' . $genre . '%')->orderBy('id', 'desc')->paginate(32);
         return view('genre', compact('data', 'genre'));
     }
     public function movieByYear($year)
     {
-        $data = Post::where('release', 'like', '%' . $year . '%')->paginate(32);
+        $data = Post::where('release', 'like', '%' . $year . '%')->orderBy('id', 'desc')->paginate(32);
         return view('year', compact('data', 'year'));
     }
     public function movieByCountry($country)
     {
-        $data = Post::where('country', 'like', '%' . $country . '%')->paginate(32);
+        $data = Post::where('country', 'like', '%' . $country . '%')->orderBy('id', 'desc')->paginate(32);
         return view('country', compact('data', 'country'));
     }
     public function latestMovies()
