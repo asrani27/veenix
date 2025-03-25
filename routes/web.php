@@ -1,26 +1,31 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TvController;
 use App\Http\Controllers\UriController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\YearController;
+use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\ActorController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\TvUserController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\PostUserController;
 use App\Http\Controllers\SuperadminController;
-use App\Http\Controllers\TvController;
-use App\Http\Controllers\TvUserController;
+
+Route::get('/sitemap.xml', function () {
+    $posts = Post::latest()->get(); // Ambil semua berita
+
+    return Response::view('sitemap', compact('posts'))->header('Content-Type', 'application/xml');
+});
 
 Route::get('/', [FrontController::class, 'index']);
-Route::get('/tes', function () {
-    $resp = Http::get('https://gdriveplayer.club/player/ajJTZURsYTB3akhrNkJXMG5BbldQUXI1aFhHaWdZOVJRQU56Z0h0Qmg4NVJaTmRUNDQzTnQ2MVlSNVRzT1FZdS9CZEhOTStxV0RLVC92WGtZamQ4b3dqRklVL2tpZ3JPeTZwWlpwWlh2NG89');
-    dd($resp->body());
-});
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LogoutController::class, 'logout']);
