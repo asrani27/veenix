@@ -52,7 +52,7 @@
                             <span class="badge bg-gradient-yellow"
                                 style="padding:6px 6px; margin-top:0px; font-size:14px">{{$item->quality}}</span>
                         </div>
-                        @include('title');
+                        @include('title')
 
                     </div>
                 </a>
