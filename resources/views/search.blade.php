@@ -7,7 +7,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="VEENIX Nonton Film {{$search}} Subtitle Indonesia">
 <meta property="og:description" content="VEENIX Nonton Film {{$search}} Subtitle Indonesia">
-<meta property="og:url" content="https://veenix.online/">
+<meta property="og:url" content="{{ secure_url()->current() }}">
 <meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
 @endpush
 @push('css')
