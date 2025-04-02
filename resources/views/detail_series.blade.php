@@ -29,22 +29,22 @@
 <meta name="publisher" content="VEENIX">
 
 <!-- Schema.org -->
-{{-- <script type="application/ld+json">
+<script type="application/ld+json">
   {
   "@context": "https://schema.org",
   "@type": "Movie",
-  "name": "{{ $data->title }}",
-  "description": "{{ $data->description }}",
-  "image": "{{ $data->image }}",
-  "director": "{{ $data->director }}",
+  "name": "{{ $data->tvseries->title }}",
+  "description": "{{ $data->tvseries->description }}",
+  "image": "{{ $data->tvseries->image }}",
+  "director": "{{ $data->tvseries->director }}",
   "actor": [
-    @foreach (json_decode($data->actor) as $actor)
+    @foreach (json_decode($data->tvseries->actor) as $actor)
       "{{ $actor }}"{{ !$loop->last ? ',' : '' }}
     @endforeach
   ],
-  "datePublished": "{{ $data->release }}"
+  "datePublished": "{{ $data->tvseries->release }}"
 }
-</script> --}}
+</script>
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ url()->current() }}" />
