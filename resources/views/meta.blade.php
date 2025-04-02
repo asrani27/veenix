@@ -6,7 +6,8 @@
 <meta property="og:title" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
 <meta property="og:description"
     content="VEENIX - INDO FILM Sebagai Situs Nonton Film LK21 Bioskop Keren Layarkaca21 XXI Online Terlengkap dan Download Streaming Movie Sub Indo Gratis.">
-\
+
+<meta property="og:url" content="{{ secure_url(Request::path()) }}">
 <meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
 
 <meta name="copyright" content="INDOFILM">
