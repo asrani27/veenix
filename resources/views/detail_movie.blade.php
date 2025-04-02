@@ -1,26 +1,53 @@
 @extends('visit.app')
 @push('meta')
 <title>Nonton {{$data->title}} Subtitle Indonesia</title>
+<!-- Meta Utama -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-<meta name="description" content="{{$data->description}}">
-<meta property="og:locale" content="id_ID">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nonton {{$data->title}} Subtitle Indonesia">
-<meta property="og:description" content="{{$data->description}}">
-<meta property="og:url" content="https://veenix.online/">
-<meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
+<meta name="description"
+  content="Nonton {{ $data->title }} subtitle Indonesia streaming online gratis. {{ $data->description }}">
 
-<meta name="copyright" content="VEENIX">
-<meta name="rating" content="general">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="video.movie">
+<meta property="og:title" content="Nonton {{ $data->title }} Subtitle Indonesia">
+<meta property="og:description" content="{{ $data->description }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:site_name" content="VEENIX - Nonton Film Online">
+<meta property="og:image" content="{{ $data->image }}">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Nonton {{ $data->title }} Subtitle Indonesia">
+<meta name="twitter:description" content="{{ $data->description }}">
+
+<!-- Geotargeting -->
+<meta name="geo.region" content="ID">
 <meta name="geo.placename" content="Indonesia">
-<meta name="geo.country" content="ID">
-<meta name="language" content="ID">
-<meta name="tgn.nation" content="Indonesia">
-<meta name="author" content="VEENIX">
-<meta name="distribution" content="global">
-<meta name="publisher" content="VEENIX, Inc.">
-<meta name="Slurp" content="all">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+<meta name="language" content="Indonesian">
+
+<!-- Hak Cipta & Publisher -->
+<meta name="copyright" content="© 2024 VEENIX. All Rights Reserved.">
+<meta name="publisher" content="VEENIX">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@type": "Movie",
+  "name": "{{ $data->title }}",
+  "description": "{{ $data->description }}",
+  "image": "{{ $data->image }}",
+  "director": "{{ $data->director }}",
+  "actor": [
+    @foreach (json_decode($data->actor) as $actor)
+      "{{ $actor }}"{{ !$loop->last ? ',' : '' }}
+    @endforeach
+  ],
+  "datePublished": "{{ $data->release }}"
+}
+</script>
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ url()->current() }}" />
 @endpush
 @push('css')
 
