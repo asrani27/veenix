@@ -1,23 +1,23 @@
 @extends('visit.app')
 @push('meta')
-<title>Nonton {{$data->title}} Subtitle Indonesia</title>
+<title>Nonton {{$data->tvseries->title}} Subtitle Indonesia</title>
 <!-- Meta Utama -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="description"
-  content="Nonton {{ $data->title }} subtitle Indonesia streaming online gratis. {{ $data->description }}">
+  content="Nonton {{ $data->tvseries->title }} subtitle Indonesia streaming online gratis. {{ $data->tvseries->description }}">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="video.movie">
-<meta property="og:title" content="Nonton {{ $data->title }} Subtitle Indonesia">
-<meta property="og:description" content="{{ $data->description }}">
+<meta property="og:title" content="Nonton {{ $data->tvseries->title }} Subtitle Indonesia">
+<meta property="og:description" content="{{ $data->tvseries->description }}">
 <meta property="og:url" content="{{ secure_url(Request::path()) }}">
 <meta property="og:site_name" content="VEENIX - Nonton Film Online">
-<meta property="og:image" content="{{ $data->image }}">
+<meta property="og:image" content="{{ $data->tvseries->image }}">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Nonton {{ $data->title }} Subtitle Indonesia">
-<meta name="twitter:description" content="{{ $data->description }}">
+<meta name="twitter:title" content="Nonton {{ $data->tvseries->title }} Subtitle Indonesia">
+<meta name="twitter:description" content="{{ $data->tvseries->description }}">
 
 <!-- Geotargeting -->
 <meta name="geo.region" content="ID">
