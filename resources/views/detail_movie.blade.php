@@ -82,11 +82,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" src="{{$data->link_video}}"
+
+        <iframe style="width: 100%; height: 80%; overflow: hidden;" frameBorder="0" allowfullscreen="true"
+          webkitallowfullscreen="true" mozallowfullscreen="true" src="{{$data->link_video}}"></iframe>
+        {{-- <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" src="{{$data->link_video}}"
           allow="autoplay; fullscreen; clipboard-write; encrypted-media; browsing-topics"
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+        </iframe> --}}
       </div>
 
       <div class="card card-primary">
