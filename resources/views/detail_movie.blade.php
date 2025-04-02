@@ -10,7 +10,7 @@
 <meta property="og:type" content="video.movie">
 <meta property="og:title" content="Nonton {{ $data->title }} Subtitle Indonesia">
 <meta property="og:description" content="{{ $data->description }}">
-<meta property="og:url" content="{{ secure_url()->current() }}">
+<meta property="og:url" content="{{ secure_url(Request::path()) }}">
 <meta property="og:site_name" content="VEENIX - Nonton Film Online">
 <meta property="og:image" content="{{ $data->image }}">
 
