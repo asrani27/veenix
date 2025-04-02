@@ -46,7 +46,6 @@
 </script>
 
 <!-- Canonical URL -->
-<link rel="canonical" href="{{ secure_url()->current() }}" />
 @endpush
 @push('css')
 
