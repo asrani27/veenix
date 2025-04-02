@@ -143,7 +143,7 @@
               <h4><strong>{{$data->tvseries->title}} : {{$data->title}} </strong></h4>
               {{$data->description}}
               <br /><br />
-              <strong>Views: </strong>{{$data->views}}<br />
+              <strong>Views: </strong>{{$data->tvseries->views}}<br />
 
               <strong>Genre: </strong>
               @if ($data->tvseries->genre != null)
