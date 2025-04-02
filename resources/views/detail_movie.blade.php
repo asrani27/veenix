@@ -26,14 +26,15 @@
 
 
 <style>
-  iframe { 
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-    #uppy{
-      width: 100%;
-      height: 500px;
-    }
+  iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  #uppy {
+    width: 100%;
+    height: 500px;
+  }
 </style>
 @endpush
 @section('content')
@@ -44,7 +45,7 @@
       <ol class="breadcrumb float-sm-left" style="background-color:#ffff0003;padding-left:0px">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         @foreach (json_decode($data->genre) as $item)
-            
+
         <li class="breadcrumb-item"><a href="/genre/{{$item}}">{{$item}}</a></li>
         @endforeach
         <li class="breadcrumb-item active">{{$data->title}}</li>
@@ -54,23 +55,26 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-          <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" allowfullscreen="yes" src="{{$data->link_video}}" allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="player" scrolling="no" frameborder="0" marginwidth="0" src="{{$data->link_video}}"
+          allow="autoplay; fullscreen" style="width: 100%; height: 80%; overflow: hidden;"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
-      
+
       <div class="card card-primary">
         <div class="card-header">
           <h3 class="card-title">LINK DOWNLOAD</h3>
 
           <div class="card-tools">
-            
+
           </div>
           <!-- /.card-tools -->
         </div>
         <div class="card-body">
           @if ($data->link_download != null)
-            @foreach (json_decode($data->link_download) as $key => $item)
-              <a href="{{$item}}"  class="btn btn-primary" target="_blank"><i class="fas fa-download"></i> Download {{$key + 1}}</a> 
-            @endforeach
+          @foreach (json_decode($data->link_download) as $key => $item)
+          <a href="{{$item}}" class="btn btn-primary" target="_blank"><i class="fas fa-download"></i> Download {{$key +
+            1}}</a>
+          @endforeach
           @endif
         </div>
       </div>
@@ -84,40 +88,40 @@
             <div class="col-sm-7" style="padding-left:25px">
               <h4><strong>{{$data->title}} </strong></h4>
               {{$data->description}}
-              <br/><br/>
-              <strong>Views: </strong>{{$data->views}}<br/>
+              <br /><br />
+              <strong>Views: </strong>{{$data->views}}<br />
 
               <strong>Genre: </strong>
 
               @if ($data->genre != null)
-                @foreach (json_decode($data->genre) as $item)
-                    <a href="/genre/{{$item}}">{{$item}}</a>, 
-                @endforeach
+              @foreach (json_decode($data->genre) as $item)
+              <a href="/genre/{{$item}}">{{$item}}</a>,
+              @endforeach
               @endif
-              <br/>
+              <br />
 
-              <strong>Director: </strong>{{$data->director}}<br/>
+              <strong>Director: </strong>{{$data->director}}<br />
 
               <strong>Actors: </strong>
               @if ($data->actor != null)
-                @foreach (json_decode($data->actor) as $item)
-                {{$item}}, 
-                @endforeach
-                <br/>
+              @foreach (json_decode($data->actor) as $item)
+              {{$item}},
+              @endforeach
+              <br />
               @endif
 
               <strong>Country: </strong>
               @if ($data->country != null)
-                @foreach (json_decode($data->country) as $item)
-                    {{$item}}, 
-                @endforeach<br/>
+              @foreach (json_decode($data->country) as $item)
+              {{$item}},
+              @endforeach<br />
               @endif
-              <strong>Duration: </strong> {{$data->duration}}<br/>
+              <strong>Duration: </strong> {{$data->duration}}<br />
 
-              <strong>Release: </strong> {{$data->release}}<br/>
+              <strong>Release: </strong> {{$data->release}}<br />
 
-              <strong>IMDb: </strong>{{$data->imdb == null ? 'N/A': $data->imdb}}<br/>
-              <strong>Quality: </strong> {{$data->quality}}<br/>
+              <strong>IMDb: </strong>{{$data->imdb == null ? 'N/A': $data->imdb}}<br />
+              <strong>Quality: </strong> {{$data->quality}}<br />
             </div>
             <div class="col-sm-3 text-center">
               <script type="text/javascript">
@@ -129,16 +133,17 @@
                   'params' : {}
                 };
               </script>
-              <script type="text/javascript" src="//www.topcreativeformat.com/55687ce0e3fb33e799931945d583fc70/invoke.js"></script>
+              <script type="text/javascript"
+                src="//www.topcreativeformat.com/55687ce0e3fb33e799931945d583fc70/invoke.js"></script>
             </div>
           </div>
-          
+
         </div>
       </div>
     </div><!-- /.col -->
-    
+
   </div>
-  
+
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
@@ -150,7 +155,7 @@
   </div>
 
 </div>
-    
+
 
 {{-- <div id="uppy">uppy</div> --}}
 @endsection
@@ -165,5 +170,6 @@
   (d.head || d.body).appendChild(s);
   })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+    Disqus.</a></noscript>
 @endpush

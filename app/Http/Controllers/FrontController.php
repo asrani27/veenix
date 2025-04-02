@@ -6,6 +6,7 @@ use Share;
 use App\Models\Tv;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -92,19 +93,15 @@ class FrontController extends Controller
     }
     public function detailMovie($slug)
     {
+        $agent = new Agent();
         $data = Post::where('slug', $slug)->first();
 
-        $shareButton = Share::page(url('/movie/' . $slug), 'Nonton film ini...',)
-            ->facebook()
-            ->telegram()
-            ->linkedin()
-            ->whatsapp()
-            ->reddit()
-            ->twitter()
-            ->pinterest();
-        //update views 
+        // if ($agent->isMobile()) {
+        //     return view('mobile.detail_movie', compact('data'));
+        // } else {
         Post::where('slug', $slug)->first()->update(['views' => $data->views + 1]);
-        return view('detail_movie', compact('data', 'shareButton'));
+        return view('detail_movie', compact('data'));
+        //}
     }
     public function detailSeries($slug, $season, $episode)
     {
