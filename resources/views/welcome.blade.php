@@ -116,7 +116,7 @@
 
                             <span class="badge bg-gradient-yellow"
                                 style="padding:6px 6px; margin-top:0px; font-size:14px">
-                                <i class="fa fa-star"></i> {{$item->imdb}}</span>
+                                <i class="fa fa-star"></i> {{$item->tvseries->imdb}}</span>
 
                             <span class="badge bg-gradient-yellow"
                                 style="padding:6px 6px; margin-top:0px; font-size:14px">S{{$item->season}}, Ep
