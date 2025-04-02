@@ -29,7 +29,7 @@
 <meta name="publisher" content="VEENIX">
 
 <!-- Schema.org -->
-<script type="application/ld+json">
+{{-- <script type="application/ld+json">
   {
   "@context": "https://schema.org",
   "@type": "Movie",
@@ -44,7 +44,7 @@
   ],
   "datePublished": "{{ $data->release }}"
 }
-</script>
+</script> --}}
 
 <!-- Canonical URL -->
 <link rel="canonical" href="{{ url()->current() }}" />
