@@ -86,6 +86,7 @@ class FrontController extends Controller
     public function detailTv($slug)
     {
         $tv = Tv::where('slug', $slug)->first();
+        Tv::where('slug', $slug)->first()->update(['views' => $tv->views + 1]);
         $semuaEpisode = $tv->episode;
         $data = $tv;
 
