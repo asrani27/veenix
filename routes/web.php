@@ -75,6 +75,8 @@ Route::middleware(['superadmin'])->group(function () {
         Route::get('/post/search', [PostController::class, 'search']);
         Route::get('/post/add', [PostController::class, 'add']);
         Route::post('/post/add', [PostController::class, 'scrap']);
+        Route::get('/post/create', [PostController::class, 'create']);
+        Route::post('/post/create', [PostController::class, 'store']);
         Route::get('/post/edit/{id}', [PostController::class, 'edit']);
         Route::post('/post/edit/{id}', [PostController::class, 'update']);
         Route::get('/post/delete/{id}', [PostController::class, 'delete']);

@@ -45,7 +45,52 @@ class PostController extends Controller
     {
         return view('superadmin.post.add');
     }
+    public function create()
+    {
+        return view('superadmin.post.create');
+    }
+    public function store(Request $req)
+    {
+        if ($req->image != null) {
+            $validator = Validator::make($req->all(), [
+                'image' => 'mimes:png,jpg,jpeg|max:1024',
+            ]);
 
+            if ($validator->fails()) {
+                Session::flash('error', 'Format Harus PNG/JPG max 1024');
+                return back();
+            }
+
+            $image = Image::read($req->file('image'));
+            $filename = time() . '-' . str_replace(" ", "", $req->file('image')->getClientOriginalName());
+
+            $destinationPathThumbnail = public_path('storage/poster/');
+
+            $image->resize(175, 260);
+            $image->save($destinationPathThumbnail . $filename);
+            if (config('app.env') == 'local') {
+                $namafile = config('app.url') . ':8000/storage/poster/' . $filename;
+            } else {
+                $namafile = config('app.url') . '/storage/poster/' . $filename;
+            }
+        } else {
+            $namafile = Post::findOrFail($id)->image;
+        }
+        $param = $req->all();
+        $param['image'] = $namafile;
+        $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
+        $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
+        $param['actor'] = json_encode(array_map('trim', (explode(',', $req->actor))));
+        if ($req->link_download == null) {
+            $param['link_download'] = null;
+        } else {
+            $param['link_download'] = json_encode(array_map('trim', (explode(',', $req->link_download))));
+        }
+
+        $data = Post::create($param);
+        Session::flash('success', 'Disimpan');
+        return redirect('/superadmin/post');
+    }
     public function edit($id)
     {
         $data = Post::findOrFail($id);

@@ -6,7 +6,10 @@
   <div class="row">
     <div class="col-lg-4">
       <a href="/superadmin/post/add" class="btn btn-primary btn-md">
-        <i class="fas fa-plus"></i> Scrapping
+        <i class="fas fa-link"></i> Scrapping
+      </a>
+      <a href="/superadmin/post/create" class="btn btn-primary btn-md">
+        <i class="fas fa-plus"></i> tambah
       </a>
     </div>
     <div class="col-lg-8">

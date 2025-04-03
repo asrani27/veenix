@@ -97,6 +97,7 @@ class SuperadminController extends Controller
     {
         return view('superadmin.user.add');
     }
+
     public function user_delete($id)
     {
         User::find($id)->delete();
