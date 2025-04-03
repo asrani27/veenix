@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\DeadLinkVideo;
 use App\Models\Post;
+use App\Jobs\DeadLinkVideo;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -77,6 +78,9 @@ class PostController extends Controller
             $namafile = Post::findOrFail($id)->image;
         }
         $param = $req->all();
+
+        $param['slug'] = Str::of($req->title)->slug('-')->value();
+
         $param['image'] = $namafile;
         $param['genre'] = json_encode(array_map('trim', (explode(',', $req->genre))));
         $param['country'] = json_encode(array_map('trim', (explode(',', $req->country))));
