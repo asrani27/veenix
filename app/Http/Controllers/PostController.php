@@ -75,7 +75,7 @@ class PostController extends Controller
                 $namafile = config('app.url') . '/storage/poster/' . $filename;
             }
         } else {
-            $namafile = Post::findOrFail($id)->image;
+            $namafile = null;
         }
         $param = $req->all();
 

@@ -100,6 +100,7 @@ class FrontController extends Controller
         // if ($agent->isMobile()) {
         //     return view('mobile.detail_movie', compact('data'));
         // } else {
+
         Post::where('slug', $slug)->first()->update(['views' => $data->views + 1]);
         return view('detail_movie', compact('data'));
         //}
