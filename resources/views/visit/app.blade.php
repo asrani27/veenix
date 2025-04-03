@@ -7,8 +7,6 @@
   @stack('meta')
 
   <link rel="icon" type="image/x-icon" href="/icon/favicon.ico">
-
-
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link rel="stylesheet" href="/muvnix/plugins/fontawesome-free/css/all.min.css">
@@ -127,7 +125,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer bg-secondary text-center">
-      {!!Histats()!!}
+      {{-- {!!Histats()!!} --}}
       <strong>Copyright &copy; 2024 </strong> All rights reserved.
     </footer>
   </div>
@@ -136,7 +134,7 @@
   <!-- jQuery -->
   <script src="/muvnix/plugins/jquery/jquery.min.js"></script>
   <script src="/muvnix/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/muvnix/dist/js/adminlte.min.js"></script>
+  {{-- <script src="/muvnix/dist/js/adminlte.min.js"></script> --}}
   @stack('js')
   {{-- <div id="histats_counter"></div> --}}
 </body>
