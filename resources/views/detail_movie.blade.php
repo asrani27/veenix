@@ -50,8 +50,6 @@
 <link rel="canonical" href="{{ secure_url(Request::path()) }}" />
 @endpush
 @push('css')
-
-
 <style>
   iframe {
     width: 100%;
@@ -160,16 +158,6 @@
       </div>
     </div><!-- /.col -->
 
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <div id="disqus_thread"></div>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>

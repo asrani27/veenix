@@ -22,6 +22,7 @@
 <meta name="Slurp" content="all">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 @endpush
+
 @push('css')
 
 
@@ -133,16 +134,6 @@
       </div>
     </div><!-- /.col -->
 
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <div id="disqus_thread"></div>
-        </div>
-      </div>
-    </div>
   </div>
 
 </div>

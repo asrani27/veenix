@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="/muvnix/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/muvnix/dist/css/adminlte.min.css">
 
-  {{-- @vite('resources/js/app.js') --}}
   @stack('css')
 
 </head>
@@ -139,9 +138,7 @@
   <script src="/muvnix/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/muvnix/dist/js/adminlte.min.js"></script>
   @stack('js')
-  <!-- Histats.com  (div with counter) -->
-  <div id="histats_counter"></div>
-  <!-- Histats.com  START  (aync)-->
+  {{-- <div id="histats_counter"></div> --}}
 </body>
 
 </html>

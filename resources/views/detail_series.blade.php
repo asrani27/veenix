@@ -185,15 +185,6 @@
 
   </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <div id="disqus_thread"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
