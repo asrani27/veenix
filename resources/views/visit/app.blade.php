@@ -125,7 +125,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer bg-secondary text-center">
-      {{-- {!!Histats()!!} --}}
+      {!!Histats()!!}
       <strong>Copyright &copy; 2024 </strong> All rights reserved.
     </footer>
   </div>
