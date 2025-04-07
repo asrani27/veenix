@@ -108,6 +108,8 @@ Route::middleware(['anggota'])->group(function () {
         Route::get('/post/edit/{id}', [PostUserController::class, 'edit']);
         Route::post('/post/edit/{id}', [PostUserController::class, 'update']);
         Route::get('/post/delete/{id}', [PostUserController::class, 'delete']);
+        Route::get('/post/create', [PostUserController::class, 'create']);
+        Route::post('/post/create', [PostUserController::class, 'store']);
 
         Route::get('/tv', [TvUserController::class, 'index']);
         Route::get('/tv/search', [TvUserController::class, 'search']);
