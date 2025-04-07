@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Episode;
 use App\Models\Tv;
+use DOMXPath as Xpath;
+use App\Models\Episode;
+use DOMDocument as DOM;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
-use DOMDocument as DOM;
-use DOMXPath as Xpath;
 
 class TvController extends Controller
 {
@@ -248,5 +249,36 @@ class TvController extends Controller
         Episode::find($id)->delete();
         Session::flash('success', 'Dihapus');
         return back();
+    }
+
+    public function search()
+    {
+        $search = request()->search;
+        $data = Tv::where('username', Auth::user()->username)->where('title', 'like', '%' . $search . '%')->paginate(10)->withQueryString();
+        $data->getCollection()->transform(function ($item) {
+            if ($item->genre == null) {
+                $item->genre = null;
+            } else {
+                $item->genre = implode(", ", json_decode($item->genre));
+            }
+            if ($item->country == null) {
+                $item->country = null;
+            } else {
+                $item->country = implode(", ", json_decode($item->country));
+            }
+
+            if ($item->actor == null) {
+                $item->actor = null;
+            } else {
+                $item->actor = implode(", ", json_decode($item->actor));
+            }
+
+            if ($item->link_download != null) {
+                $item->link_download = json_decode($item->link_download);
+            }
+            return $item;
+        });
+        request()->flash();
+        return view('user.tv.index', compact('data'));
     }
 }
