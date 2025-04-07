@@ -172,7 +172,7 @@ class PostUserController extends Controller
     public function search()
     {
         $search = request()->search;
-        $data = Post::where('title', 'like', '%' . $search . '%')->paginate(10)->withQueryString();
+        $data = Post::where('username', Auth::user()->username)->where('title', 'like', '%' . $search . '%')->paginate(10)->withQueryString();
         $data->getCollection()->transform(function ($item) {
             if ($item->genre == null) {
                 $item->genre = null;
