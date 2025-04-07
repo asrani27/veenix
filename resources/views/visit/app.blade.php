@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="/muvnix/dist/css/adminlte.min.css">
 
   @stack('css')
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NTWF2VL2ED"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NTWF2VL2ED');
+  </script>
 
 </head>
 
