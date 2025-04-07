@@ -121,12 +121,15 @@
           <!-- /.card-tools -->
         </div>
         <div class="card-body">
-          @if ($data->link_download != null)
+          <a href="{{str_replace('/stream/', '/view/', $data->link_video)}}" class="btn btn-primary" target="_blank"><i
+              class="fas fa-download"></i>
+            NagaFile.Top (Recomended Link)</a>
+          {{-- @if ($data->link_download != null)
           @foreach (json_decode($data->link_download) as $key => $item)
           <a href="{{$item}}" class="btn btn-primary" target="_blank"><i class="fas fa-download"></i> Download {{$key +
             1}}</a>
           @endforeach
-          @endif
+          @endif --}}
         </div>
       </div>
 
