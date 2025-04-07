@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<br/>
+<br />
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -11,7 +11,7 @@
                 </div>
                 <div class="card-body">
                     <form method="post" action="/user/post/edit/{{$data->id}}" enctype="multipart/form-data">
-                    @csrf
+                        @csrf
                         <div class="form-group">
                             <label>Title </label>
                             <input type="text" class="form-control" name="title" value="{{$data->title}}" required>
@@ -21,7 +21,7 @@
                             <textarea class="form-control" rows="3" name="description">{{$data->description}}</textarea>
                         </div>
                         <div class="form-group">
-                            <label>Genre  (Pisahkan dengan tanda comma ,)</label>
+                            <label>Genre (Pisahkan dengan tanda comma ,)</label>
                             <input type="text" class="form-control" name="genre" value="{{$data->genre}}" required>
                         </div>
                         <div class="form-group">
@@ -34,7 +34,8 @@
                         </div>
                         <div class="form-group">
                             <label>Director</label>
-                            <input type="text" class="form-control" name="director" value="{{$data->director}}" required>
+                            <input type="text" class="form-control" name="director" value="{{$data->director}}"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>Quality</label>
@@ -42,7 +43,8 @@
                         </div>
                         <div class="form-group">
                             <label>Duration</label>
-                            <input type="text" class="form-control" name="duration" value="{{$data->duration}}" required>
+                            <input type="text" class="form-control" name="duration" value="{{$data->duration}}"
+                                required>
                         </div>
                         <div class="form-group">
                             <label>IMDB</label>
@@ -54,17 +56,18 @@
                         </div>
                         <div class="form-group">
                             <label>Link Download (bila lebih dari 1 Pisahkan dengan tanda comma ,)</label>
-                            <textarea class="form-control" rows="3" name="link_download">{{$data->link_download}}</textarea>
+                            <textarea class="form-control" rows="3"
+                                name="link_download">{{$data->link_download}}</textarea>
                         </div>
                         <div class="form-group">
                             <label>Image (Max 1MB)</label>
                             <input type="file" name="image">
-                            <br/>
+                            <br />
                             <img src="{{$data->image}}" width="175" height="270">
                         </div>
                         <div class="form-group">
                             <div>
-                            <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </div>
                         </div>
                     </form>
