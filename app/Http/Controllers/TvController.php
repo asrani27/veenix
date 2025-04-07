@@ -279,6 +279,6 @@ class TvController extends Controller
             return $item;
         });
         request()->flash();
-        return view('user.tv.index', compact('data'));
+        return view('superadmin.tv.index', compact('data'));
     }
 }
