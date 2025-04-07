@@ -79,6 +79,7 @@ class PostController extends Controller
         }
         $param = $req->all();
 
+        $param['username'] = Auth::user()->username;
         $param['slug'] = Str::of($req->title)->slug('-')->value();
 
         $param['image'] = $namafile;
