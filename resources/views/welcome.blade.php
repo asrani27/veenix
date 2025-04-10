@@ -2,6 +2,8 @@
 
 @push('css')
 <style>
+    .as {}
+
     .card a:hover {
         box-shadow: 2px -1px 5px 11px rgba(0, 0, 0, 0.26);
         -webkit-box-shadow: 2px -1px 5px 11px rgba(0, 0, 0, 0.26);
