@@ -44,9 +44,7 @@
             margin-bottom: 20px;
         }
 
-        .logo img {
-            max-height: 80px;
-        }
+        .logo img {}
     </style>
 </head>
 
@@ -54,7 +52,7 @@
     <div class="container">
         <div class="logo">
             <!-- Ganti src dengan logo Anda jika ada -->
-            {{-- <img src="{{ asset('images/logo.png') }}" alt="Logo"> --}}
+            <img src="/muvnix/maintenance.png" alt="Logo" width="100%" height="50%">
         </div>
         <h1>503</h1>
         <h2>Website Dalam Mode Maintenance</h2>
