@@ -126,6 +126,7 @@
       <br />
       <!-- Main content -->
       <div class="content">
+          <h3 class="text-center"><i class="icon fas fa-globe"></i> domain baru => VEENIX.XYZ</h3>
         @yield('content')
       </div>
       <!-- /.content -->
