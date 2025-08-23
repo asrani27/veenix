@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Laravel\Facades\Image;
 
+
 class PostController extends Controller
 {
     public function index()
@@ -172,6 +173,7 @@ class PostController extends Controller
         Session::flash('success', 'Dihapus');
         return back();
     }
+
 
     public function scrap(Request $req)
     {
