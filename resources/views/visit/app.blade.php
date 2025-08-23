@@ -126,8 +126,6 @@
       <br />
       <!-- Main content -->
       <div class="content">
-        
-          <h3 class="text-center"><i class="icon fas fa-globe"></i> domain baru => VEENIX.XYZ</h3>
         @yield('content')
       </div>
       <!-- /.content -->
@@ -136,7 +134,7 @@
 
     <!-- Main Footer -->
     <footer class="main-footer bg-secondary text-center">
-      {!!Histats()!!}
+      {{-- {!!Histats()!!} --}}
       <strong>Copyright &copy; 2024 </strong> All rights reserved.
     </footer>
   </div>
