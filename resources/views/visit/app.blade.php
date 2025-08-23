@@ -84,10 +84,6 @@
               <a href="/tv" class="nav-link" style="font-family: 'Times New Roman'; font-size:18px; color:whiet">TV
                 SERIES</a>
             </li>
-            <li class="nav-item">
-              <a href="/request" class="nav-link"
-                style="font-family: 'Times New Roman'; font-size:18px; color:whiet">REQUEST</a>
-            </li>
           </ul>
 
           <!-- SEARCH FORM -->

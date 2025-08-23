@@ -7,7 +7,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Request Film Subtitle Indonesia">
 <meta property="og:description" content="Request Film Subtitle Indonesia">
-<meta property="og:url" content="https://veenix.online/">
+<meta property="og:url" content="https://veenix.xyz/">
 <meta property="og:site_name" content="VEENIX - INDOFILM: Nonton Film LK21 dan Bioskopkeren Layarkaca21 XXI">
 
 <meta name="copyright" content="VEENIX">
