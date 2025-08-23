@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Post;
+use App\Models\Tv;
 use Illuminate\Console\Command;
 
 class gantiDomain extends Command
@@ -27,6 +28,13 @@ class gantiDomain extends Command
     public function handle()
     {
         $data = Post::get();
+        $data->map(function ($item) {
+            $newdomain = str_replace('veenix.online', 'veenix.xyz', $item->image);
+            $item->image = $newdomain;
+            $item->save();
+            return $item;
+        });
+        $data = Tv::get();
         $data->map(function ($item) {
             $newdomain = str_replace('veenix.online', 'veenix.xyz', $item->image);
             $item->image = $newdomain;
